@@ -23,47 +23,65 @@
 
 module key_deboucing (
     input        clk,
-    input  [1:0] col,
+    input  [3:0] col,
     output [3:0] row,
-    output          btnout0  //输出
-    output          btnout1,
-    output          btnout2,
-    output          btnout3
+    output [3:0] key
 );
+    reg[1:0] scan_cnt;  
+    reg [3:0] row_out;
+    reg [2:0] btn0,btn1,btn2,btn3;
+    reg [1:0] current_state, next_state;
+    reg [3:0] key_out;
+    wire clk_20ms;
 
-    parameter SWP0 = 1'b0;
-    parameter SWP1 = 1'b1;
-    wire clk_20ms;  //20ms clk
+    parameter SWP0 = 2'b00;
+    parameter SWP1 = 2'b01;
+    parameter SWP2 = 2'b10;
+    parameter SWP3 = 2'b11;
 
     divclk divclk (
         .clk   (clk),
         .btnclk(clk_20ms)
     );
-    reg btn00, btn01, btn20;
-    reg btn10, btn11, btn10;
-    row[3:0] = 1110;
+
     always @(posedge clk_20ms) begin
-        btn00 <= col[0];
-        btn01 <= btn00;
-        btn02 <= btn01;
+        btn0[0] <= col[0];
+        btn0[1] <= btn0[0];
+        btn0[2] <= btn0[1];
     end
-    always @(posedge clk_20ms) begin
-        btn10 <= col[1];
-        btn11 <= btn10;
-        btn12 <= btn11;
-    end
+
+    assign key = key_out;
+    assign row[3:0] = row_out;
     assign btnout0 = ((~btn02) & (~btn01) & (~btn00)) | (btn02 & (~btn01) & (~btn00));
 
     always @(*) begin
-        next_state = current_state;  // 默认保持当前状态
+        next_state = current_state;
         case (current_state)
             SWP0: begin
-                if (btnout0 == 1) begin
+                if (col[0] == 0) begin
+                    row_out = 4'b1110;
+                    scan_cnt = 0;
                     next_state = SWP1;
                 end
             end
             SWP1: begin
-                if (btnout0 == 0) begin
+                if (scan_cnt == 3) begin
+                    row_out = 4'b1101;
+                    scan_cnt = 0;
+                    next_state = SWP2;
+                end
+            end
+            SWP2: begin
+                if (scan_cnt == 3) begin
+                    row_out = 4'b1011;
+                    scan_cnt = 0;
+                    next_state = SWP3;
+                end
+            end
+            SWP3: begin
+                if (scan_cnt == 3) begin
+                    row_out = 4'b0111;
+                    scan_cnt = 0;
                     next_state = SWP0;
                 end
             end
@@ -74,17 +92,16 @@ module key_deboucing (
     end
 
     always @(posedge clk_20ms) begin
-        current_state <= next_state;  // 更新状态
-        // 根据当前状态设置动作输出
+        current_state <= next_state;
         case (current_state)
             SWP0: begin
-                led <= 4'b0000;
+
             end
             SWP1: begin
-                led <= 4'b1111;
+
             end
             default: begin
-                led <= 4'b0000;
+
             end
         endcase
     end
