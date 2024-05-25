@@ -15,3 +15,8 @@ start_gui
 open_project D:/Code/FPGA/lifter/lifter.xpr
 update_compile_order -fileset sources_1
 update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+close [ open D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/div_1ms.v w ]
+add_files D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/div_1ms.v
+update_compile_order -fileset sources_1
