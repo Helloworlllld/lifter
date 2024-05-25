@@ -21,6 +21,11 @@ set_property PACKAGE_PIN R12 [get_ports {col[0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {col[0]}]
 set_property PACKAGE_PIN T10 [get_ports {col[1]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {col[1]}]
+set_property PACKAGE_PIN R12 [get_ports {col[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {col[2]}]
+set_property PACKAGE_PIN T10 [get_ports {col[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {col[3]}]
+
 ##下拉列线到低电平
 set_property PULLUP true [get_ports {col[0]}]
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets {col[0]}] 
