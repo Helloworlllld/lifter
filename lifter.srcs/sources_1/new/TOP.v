@@ -26,13 +26,12 @@ module TOP (
     input      [1:0] sw,         //开关信号
     output     [3:0] row,        //4 row,输出
     output     [7:0] seg,        //segment
-    output     [5:0] dig,        //dig
-    output reg [3:0] led
+    output     [1:0] dig,        //dig
+    output    [3:0] led
 );
 
-    reg [3:0] disp_0, disp_1;
     wire [3:0] key;
-
+    reg [3:0] key_buf;
     parameter INIT = 0;
     parameter START = 1;
 
@@ -43,13 +42,25 @@ module TOP (
         .key    (key)
     );
 
+    always @(*) begin
+        key_buf = key;
+    end
+
     dynamic_led2 dynamic_led2 (
-        .disp_data_right0 (key),
-        .disp_data_right1 (key),
+        .disp_data_right0 (key_buf),
+        .disp_data_right1 (key_buf),
         .clk             (clk_50mhz),
         .seg             (seg),
         .dig             (dig)
     );
+
+    assign led[0] = (key_buf == 3);
+    assign led[1] = (key_buf == 7);
+    assign led[2] = (key_buf == 11);
+    assign led[3] = (key_buf == 15);
+    
+
+
     // always @(*) begin
     //     next_state = current_state;  // 默认保持当前状态
     //     case (current_state)
