@@ -97,6 +97,12 @@ module TOP (
                     else if (key_buf == 7) begin
                         next_state = CNT_CLR;
                     end
+                    else if (led[1] == 1) begin
+                        next_state = CNT_CLR;
+                    end
+                    else if (led[3] == 1) begin
+                        next_state = CNT_CLR;
+                    end
                     else begin
                         next_state = AT_1;
                     end
@@ -111,6 +117,12 @@ module TOP (
                         next_state = CNT_CLR;
                     end
                     else if (key_buf == 3) begin
+                        next_state = CNT_CLR;
+                    end
+                    else if (led[0] == 1) begin
+                        next_state = CNT_CLR;
+                    end
+                    else if (led[2] == 1) begin
                         next_state = CNT_CLR;
                     end
                     else begin
@@ -156,35 +168,72 @@ module TOP (
         current_state <= next_state;
         case (current_state)
             INIT: begin
-                disp_floor = 1;
-                disp_state = 4'hA;
+                disp_floor <= 1;
+                disp_state <= 4'hA;
             end
             AT_1: begin
-                disp_floor = 1;
-                disp_state = 4'hA;
+                disp_floor <= 1;
+                disp_state <= 4'hA;
+                led[2] <= 0;
+                led[0] <= 0;
                 callback <= GOING_UP;
+                if (key_buf == 7) begin
+                    led[3] <= 1;
+                end
+                if (key_buf == 4) begin
+                    led[1] <= 1;
+                end
+                if(sw[0] == 0) begin
+                    led <= 4'b0000;
+                end
             end
             AT_2: begin
-                disp_floor = 2;
-                disp_state = 4'hA;
+                disp_floor <= 2;
+                disp_state <= 4'hA;
+                led[3] <= 0;
+                led[1] <= 0;
                 callback <= GOING_DOWN;
+                if (key_buf == 3) begin
+                    led[2] <= 1;
+                end
+                if (key_buf == 0) begin
+                    led[0] <= 1;
+                end
+                if(sw[0] == 0) begin
+                    led <= 4'b0000;
+                end
             end
             GOING_UP: begin
-                disp_floor = 1;
-                disp_state = 4'hB;
+                disp_floor <= 1;
+                disp_state <= 4'hB;
                 delay_counter <= delay_counter + 1;
+                if (key_buf == 0) begin
+                    led[0] <= 1;
+                end
+                if (key_buf == 3) begin
+                    led[2] <= 1;
+                end
+                if(sw[0] == 0) begin
+                    led <= 4'b0000;
+                end
             end
             GOING_DOWN: begin
-                disp_floor = 2;
-                disp_state = 4'hC;
+                disp_floor <= 2;
+                disp_state <= 4'hC;
                 delay_counter <= delay_counter + 1;
+                if (key_buf == 4) begin
+                    led[1] <= 1;
+                end
+                if (key_buf == 7) begin
+                    led[3] <= 1;
+                end
             end
             RST_WHILE_GOING_UP: begin
-                disp_state = 4'hC;
+                disp_state <= 4'hC;
                 delay_counter <= delay_counter - 1;
             end
             CNT_CLR: begin
-                delay_counter = 0;
+                delay_counter <= 0;
             end
             default: begin
 
