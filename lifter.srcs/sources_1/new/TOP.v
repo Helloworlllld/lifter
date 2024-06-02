@@ -27,72 +27,168 @@ module TOP (
     output     [3:0] row,        //4 row,输出
     output     [7:0] seg,        //segment
     output     [1:0] dig,        //dig
-    output    [3:0] led
+    output reg [3:0] led
 );
 
-    wire [3:0] key;
-    reg [3:0] key_buf;
+    wire          clk_10hz;
+    wire    [3:0] key;
+    wire         press;
+    reg    [3:0] key_buf;
+    integer       delay_counter;
+    integer       delay_limit;
+    integer       callback;
+    reg     [3:0] disp_floor = 4'b0000;
+    reg     [3:0] disp_state = 4'b0000;
+    reg     [7:0] current_state = 8'b00000000;
+    reg     [7:0] next_state = 8'b00000000;
+
     parameter INIT = 0;
-    parameter START = 1;
+    parameter AT_1 = 1;
+    parameter AT_2 = 2;
+    parameter GOING_UP = 3;
+    parameter GOING_DOWN = 4;
+    parameter RST_WHILE_GOING_UP = 5;
+    parameter CNT_CLR = 6;
+
+    clk_10hz clk_10hz (
+        .clk_in (clk_50mhz),
+        .clk_out(clk_10hz)
+    );
 
     key_deboucing key_deboucing (
-        .clk    (clk_50mhz),
-        .col    (col),
-        .row    (row),
-        .key    (key)
+        .clk(clk_50mhz),
+        .col(col),
+        .row(row),
+        .key(key),
+        .press(press)
     );
 
     always @(*) begin
-        key_buf = key;
+        if (sw[1]&press) begin
+            key_buf = key;
+        end else begin
+            key_buf = 4'b1111;
+        end
     end
 
+    // A:ready B:up C:down
     dynamic_led2 dynamic_led2 (
-        .disp_data_right0 (key_buf),
-        .disp_data_right1 (key_buf),
+        .disp_data_right0(disp_floor),
+        .disp_data_right1(disp_state),
         .clk             (clk_50mhz),
         .seg             (seg),
         .dig             (dig)
     );
 
-    assign led[0] = (key_buf == 3);
-    assign led[1] = (key_buf == 7);
-    assign led[2] = (key_buf == 11);
-    assign led[3] = (key_buf == 15);
-    
+    always @(*) begin
+        next_state = current_state;
+        case (current_state)
+            INIT: begin
+                next_state = AT_1;
+            end
+            AT_1: begin
+                if(sw[0] == 0) begin
+                    next_state = AT_1;
+                end
+                else begin
+                    if (key_buf == 4) begin
+                        next_state = CNT_CLR;
+                    end
+                    else if (key_buf == 7) begin
+                        next_state = CNT_CLR;
+                    end
+                    else begin
+                        next_state = AT_1;
+                    end
+                end
+            end
+            AT_2: begin
+                if(sw[0] == 0) begin
+                    next_state = CNT_CLR;
+                end
+                else begin
+                    if (key_buf == 0) begin
+                        next_state = CNT_CLR;
+                    end
+                    else if (key_buf == 3) begin
+                        next_state = CNT_CLR;
+                    end
+                    else begin
+                        next_state = AT_2;
+                    end
+                end
+            end
+            GOING_UP: begin
+                if(sw[0] == 0) begin
+                    next_state = RST_WHILE_GOING_UP;
+                end
+                else begin
+                    if (delay_counter == 299) begin
+                        next_state = AT_2;
+                    end
+                    else begin
+                        next_state = GOING_UP;
+                    end
+                end
+            end
+            GOING_DOWN: begin
+                if (delay_counter == 299) begin
+                    next_state = AT_1;
+                end
+            end
+            RST_WHILE_GOING_UP: begin
+                if (delay_counter == 0) begin
+                    next_state = AT_1;
+                end
+            end
+            CNT_CLR: begin
+                if (delay_counter == 0) begin
+                    next_state = callback;
+                end
+            end
+            default: begin
+                next_state = INIT;
+            end
+        endcase
+    end
 
+    always @(posedge clk_10hz) begin
+        current_state <= next_state;
+        case (current_state)
+            INIT: begin
+                disp_floor = 1;
+                disp_state = 4'hA;
+            end
+            AT_1: begin
+                disp_floor = 1;
+                disp_state = 4'hA;
+                callback <= GOING_UP;
+            end
+            AT_2: begin
+                disp_floor = 2;
+                disp_state = 4'hA;
+                callback <= GOING_DOWN;
+            end
+            GOING_UP: begin
+                disp_floor = 1;
+                disp_state = 4'hB;
+                delay_counter <= delay_counter + 1;
+            end
+            GOING_DOWN: begin
+                disp_floor = 2;
+                disp_state = 4'hC;
+                delay_counter <= delay_counter + 1;
+            end
+            RST_WHILE_GOING_UP: begin
+                disp_state = 4'hC;
+                delay_counter <= delay_counter - 1;
+            end
+            CNT_CLR: begin
+                delay_counter = 0;
+            end
+            default: begin
 
-    // always @(*) begin
-    //     next_state = current_state;  // 默认保持当前状态
-    //     case (current_state)
-    //         INIT: begin
-    //             if (sw[0] == 1) begin
-    //                 next_state = START;
-    //             end
-    //         end
-    //         START: begin
-    //             if (sw[0] == 0) begin
-    //                 next_state = INIT;
-    //             end
-    //         end
-    //         default: begin
-    //             next_state = INIT;
-    //         end
-    //     endcase
-    // end
-
-    // always @(posedge clk_100) begin
-    //     current_state <= next_state;  // 更新状态
-    //     // 根据当前状态设置动作输出
-    //     case (current_state)
-    //         INIT: begin
-    //             led <= 4'b0000;
-    //         end
-    //         START: begin
-    //             led <= 4'b1111;
-    //         end
-    //         default: begin
-    //             led <= 4'b0000;
-    //         end
-    //     endcase
-    // end
+            end
+        endcase
+    end
 endmodule

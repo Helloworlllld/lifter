@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Mon May 27 16:35:55 2024
-# Process ID: 5436
+# Start of session at: Sun Jun  2 16:43:22 2024
+# Process ID: 26172
 # Current directory: D:/Code/FPGA/lifter/lifter.runs/synth_1
 # Command line: vivado.exe -log TOP.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TOP.tcl
 # Log file: D:/Code/FPGA/lifter/lifter.runs/synth_1/TOP.vds
@@ -24,11 +24,15 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 23108
+INFO: [Synth 8-7075] Helper process launched with PID 27508
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 1308.898 ; gain = 440.758
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:03 . Memory (MB): peak = 1308.605 ; gain = 441.109
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-2254] instance name 'clk_10hz' matches net/port name [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/TOP.v:56]
+INFO: [Synth 8-6826] previous declaration of 'clk_10hz' is from here [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/TOP.v:33]
 INFO: [Synth 8-6157] synthesizing module 'TOP' [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/TOP.v:23]
+INFO: [Synth 8-6157] synthesizing module 'clk_10hz' [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/clk_10hz.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'clk_10hz' (0#1) [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/clk_10hz.v:23]
 INFO: [Synth 8-6157] synthesizing module 'key_deboucing' [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/key_deboucing.v:24]
 INFO: [Synth 8-6155] done synthesizing module 'key_deboucing' (0#1) [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/key_deboucing.v:24]
 INFO: [Synth 8-6157] synthesizing module 'dynamic_led2' [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/dynamic_led2.v:24]
@@ -37,77 +41,56 @@ WARNING: [Synth 8-567] referenced signal 'disp_data_right1' should be on the sen
 INFO: [Synth 8-226] default block is never used [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/dynamic_led2.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'dynamic_led2' (0#1) [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/dynamic_led2.v:24]
 INFO: [Synth 8-6155] done synthesizing module 'TOP' (0#1) [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/TOP.v:23]
-WARNING: [Synth 8-7129] Port sw[1] in module TOP is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[0] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-3848] Net led in module/entity TOP does not have driver. [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/TOP.v:30]
+WARNING: [Synth 8-7129] Port led[3] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port led[2] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port led[1] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port led[0] in module TOP is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1417.812 ; gain = 549.672
+Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1417.910 ; gain = 550.414
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1417.812 ; gain = 549.672
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1417.910 ; gain = 550.414
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1417.812 ; gain = 549.672
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1417.910 ; gain = 550.414
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1417.812 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1417.910 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc]
-WARNING: [Vivado 12-584] No ports matched 'dig[2]'. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:52]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:52]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'dig[3]'. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:53]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:53]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'dig[4]'. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:54]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:54]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'dig[5]'. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:55]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:55]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'dig[2]'. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:58]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:58]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'dig[3]'. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:59]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:59]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'dig[4]'. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:60]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:60]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'dig[5]'. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:61]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc:61]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 Finished Parsing XDC File [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Code/FPGA/lifter/lifter.srcs/constrs_1/new/cons.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1501.902 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1451.273 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1501.902 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1451.273 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:09 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tftg256-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:09 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:02 ; elapsed = 00:00:09 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'key_deboucing'
 ---------------------------------------------------------------------------------------------------
@@ -122,34 +105,42 @@ INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in modul
                 WAIT_RLF |                          1000000 |                              110
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'one-hot' in module 'key_deboucing'
-WARNING: [Synth 8-327] inferring latch for variable 'row_reg' [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/key_deboucing.v:67]
-WARNING: [Synth 8-327] inferring latch for variable 'divcnt_reg' [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/key_deboucing.v:66]
+WARNING: [Synth 8-327] inferring latch for variable 'row_reg' [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/key_deboucing.v:66]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:09 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:08 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   25 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 2     
+	   2 Input   25 Bit       Adders := 2     
 	   2 Input    1 Bit       Adders := 1     
 +---Registers : 
-	               25 Bit    Registers := 1     
-	                4 Bit    Registers := 1     
+	               32 Bit    Registers := 3     
+	               25 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 3     
 	                2 Bit    Registers := 3     
-	                1 Bit    Registers := 3     
+	                1 Bit    Registers := 4     
 +---Muxes : 
-	   7 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 3     
+	   8 Input   32 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 1     
 	   7 Input    7 Bit        Muxes := 1     
 	   2 Input    7 Bit        Muxes := 5     
 	   7 Input    4 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 2     
-	   2 Input    2 Bit        Muxes := 9     
+	   2 Input    4 Bit        Muxes := 5     
+	   8 Input    4 Bit        Muxes := 2     
+	   4 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 10    
 	   7 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 11    
+	   2 Input    1 Bit        Muxes := 15    
 	   3 Input    1 Bit        Muxes := 1     
-	   7 Input    1 Bit        Muxes := 7     
+	   7 Input    1 Bit        Muxes := 6     
+	   8 Input    1 Bit        Muxes := 5     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -166,30 +157,32 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3936] Found unconnected internal register 'callback_reg' and it is trimmed from '32' to '8' bits. [D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/TOP.v:165]
 WARNING: [Synth 8-3917] design TOP has port seg[7] driven by constant 0
-WARNING: [Synth 8-7129] Port sw[1] in module TOP is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[0] in module TOP is either unconnected or has no load
-WARNING: [Synth 8-3332] Sequential element (key_deboucing/divcnt_reg[5]) is unused and will be removed from module TOP.
+WARNING: [Synth 8-7129] Port led[3] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port led[2] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port led[1] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port led[0] in module TOP is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:10 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:10 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:03 ; elapsed = 00:00:13 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:02 ; elapsed = 00:00:13 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:03 ; elapsed = 00:00:13 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Timing Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:13 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:03 ; elapsed = 00:00:13 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Technology Mapping : Time (s): cpu = 00:00:02 ; elapsed = 00:00:13 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -207,37 +200,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:04 ; elapsed = 00:00:16 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished IO Insertion : Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:04 ; elapsed = 00:00:16 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:04 ; elapsed = 00:00:16 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:04 ; elapsed = 00:00:16 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:16 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:04 ; elapsed = 00:00:16 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -253,43 +246,43 @@ Report Cell Usage:
 +------+-------+------+
 |      |Cell   |Count |
 +------+-------+------+
-|1     |BUFG   |     1|
-|2     |CARRY4 |    21|
-|3     |LUT1   |     3|
-|4     |LUT2   |    19|
-|5     |LUT3   |    23|
-|6     |LUT4   |    24|
-|7     |LUT5   |     8|
-|8     |LUT6   |    16|
-|9     |FDRE   |    77|
-|10    |LD     |    11|
-|11    |IBUF   |     5|
-|12    |OBUF   |    18|
+|1     |BUFG   |     2|
+|2     |CARRY4 |    28|
+|3     |LUT1   |     6|
+|4     |LUT2   |     6|
+|5     |LUT3   |    42|
+|6     |LUT4   |    14|
+|7     |LUT5   |    13|
+|8     |LUT6   |    40|
+|9     |FDRE   |   146|
+|10    |LD     |     4|
+|11    |IBUF   |     7|
+|12    |OBUF   |    14|
+|13    |OBUFT  |     4|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:04 ; elapsed = 00:00:16 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 1451.273 ; gain = 583.777
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 1501.902 ; gain = 549.672
-Synthesis Optimization Complete : Time (s): cpu = 00:00:04 ; elapsed = 00:00:16 . Memory (MB): peak = 1501.902 ; gain = 633.762
+Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:02 ; elapsed = 00:00:15 . Memory (MB): peak = 1451.273 ; gain = 550.414
+Synthesis Optimization Complete : Time (s): cpu = 00:00:03 ; elapsed = 00:00:16 . Memory (MB): peak = 1451.273 ; gain = 583.777
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1501.902 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1451.273 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 32 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1501.902 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1451.273 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 11 instances were transformed.
-  LD => LDCE: 11 instances
+  A total of 4 instances were transformed.
+  LD => LDCE: 4 instances
 
-Synth Design complete | Checksum: 6501db6
+Synth Design complete | Checksum: b036b7a4
 INFO: [Common 17-83] Releasing license: Synthesis
-30 Infos, 19 Warnings, 8 Critical Warnings and 0 Errors encountered.
+33 Infos, 16 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:04 ; elapsed = 00:00:19 . Memory (MB): peak = 1501.902 ; gain = 1023.867
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1501.902 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:04 ; elapsed = 00:00:18 . Memory (MB): peak = 1451.273 ; gain = 974.809
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1451.273 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/Code/FPGA/lifter/lifter.runs/synth_1/TOP.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file TOP_utilization_synth.rpt -pb TOP_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon May 27 16:36:19 2024...
+INFO: [Common 17-206] Exiting Vivado at Sun Jun  2 16:43:45 2024...

@@ -70,8 +70,12 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 5
+set_param synth.incrementalSynthesisCache C:/Users/14948/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-24220-DesktopG/incrSyn
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tftg256-2
 
@@ -87,6 +91,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
+  D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/clk_10hz.v
   D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/dynamic_led2.v
   D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/key_deboucing.v
   D:/Code/FPGA/lifter/lifter.srcs/sources_1/new/TOP.v

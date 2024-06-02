@@ -25,7 +25,8 @@ module key_deboucing (
     input            clk,
     input      [3:0] col,
     output reg [3:0] row,
-    output reg [3:0] key
+    output reg [3:0] key,
+    output           press
 );
 
     reg [2:0] current_state, next_state;
@@ -42,15 +43,13 @@ module key_deboucing (
     parameter WAIT_RLF = 3'b110;
 
 
-    reg [31:0] divcnt = 499999;
+    //reg [31:0] divcnt = 499999;
     reg [31:0] btnclk_cnt = 0;  //对50M时钟1M分频的计数器 
     reg        btnclk = 0;  //50Hz信号，周期20ms
     always@(posedge clk) //20ms 50M/50=1000000 50Hz
     begin
-        if (btnclk_cnt == divcnt) begin
+        if (btnclk_cnt == 499999) begin
             btnclk <= ~btnclk;
-            btnclk_cnt <= 0;
-        end else if (btnclk_cnt > divcnt) begin
             btnclk_cnt <= 0;
         end else begin
             btnclk_cnt <= btnclk_cnt + 1'b1;
@@ -58,12 +57,12 @@ module key_deboucing (
     end
 
     assign col_total = col[0] & col[1] & col[2] & col[3];
+    assign press = ~col_total;
 
     always @(*) begin
         next_state = current_state;
         case (current_state)
             INIT: begin
-                divcnt = 249999;
                 row = 4'b0000;
                 if (switch_flag == 1) begin
                     next_state = SCAN_COL;
@@ -79,7 +78,6 @@ module key_deboucing (
                 end
             end
             SCAN_ROW_0: begin
-                divcnt = 99999;
                 row = 4'b1110;
                 if (switch_flag == 1) begin
                     next_state = WAIT_RLF;
@@ -116,13 +114,11 @@ module key_deboucing (
                 end
             end
             WAIT_RLF: begin
-                divcnt = 499999;
                 if (switch_flag == 3) begin
                     next_state = INIT;
                 end
             end
             default: begin
-                divcnt = 499999;
                 next_state = INIT;
             end
         endcase
