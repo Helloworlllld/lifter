@@ -26,7 +26,7 @@ module key_deboucing (
     input      [3:0] col,
     output reg [3:0] row,
     output reg [3:0] key,
-    output           press
+    output reg       press
 );
 
     reg [2:0] current_state, next_state;
@@ -48,7 +48,7 @@ module key_deboucing (
     reg        btnclk = 0;  //50Hz信号，周期20ms
     always@(posedge clk) //20ms 50M/50=1000000 50Hz
     begin
-        if (btnclk_cnt == 499999) begin
+        if (btnclk_cnt == 249999) begin
             btnclk <= ~btnclk;
             btnclk_cnt <= 0;
         end else begin
@@ -57,7 +57,6 @@ module key_deboucing (
     end
 
     assign col_total = col[0] & col[1] & col[2] & col[3];
-    assign press = ~col_total;
 
     always @(*) begin
         next_state = current_state;
@@ -189,7 +188,9 @@ module key_deboucing (
                 if (~col_total) begin
                     key[1:0] <= col_temp;
                     key[3:2] <= row_temp;
+                    press <= 1;
                 end else begin
+                    press <= 0;
                     switch_flag <= 3;
                 end
             end
