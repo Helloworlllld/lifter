@@ -24,9 +24,13 @@
 module dynamic_led2 (
     input      [3:0] disp_data_right0,
     input      [3:0] disp_data_right1,
+    input      [3:0] disp_data_right2,
+    input      [3:0] disp_data_right3,
+    input      [3:0] disp_data_right4,
+    input      [3:0] disp_data_right5,
     input            clk,
     output reg [7:0] seg,
-    output reg [1:0] dig
+    output reg [5:0] dig
 );
 
     //分频为1KHz
@@ -41,16 +45,20 @@ module dynamic_led2 (
     //6进制计数器
     reg [2:0] num = 0;
     always @(posedge clk_div) begin
-        if (num >= 1) num = 0;
+        if (num >= 5) num = 0;
         else num = num + 1;
     end
 
     //译码器
     always @(num) begin
         case (num)
-            0: dig = 6'b10;
-            1: dig = 6'b01;
-            default: dig = 0;
+            0: dig = 6'b111110;
+            1: dig = 6'b111101;
+            2: dig = 6'b111011;
+            3: dig = 6'b110111;
+            4: dig = 6'b101111;
+            5: dig = 6'b011111;
+            default: dig=6'b111111;
         endcase
     end
 
@@ -60,6 +68,10 @@ module dynamic_led2 (
         case (num)
             0: disp_data = disp_data_right0;
             1: disp_data = disp_data_right1;
+            2: disp_data = disp_data_right2;
+            3: disp_data = disp_data_right3;
+            4: disp_data = disp_data_right4;
+            5: disp_data = disp_data_right5;
             default: disp_data = 0;
         endcase
     end
@@ -76,12 +88,12 @@ module dynamic_led2 (
             4'h7: seg = 8'h07;
             4'h8: seg = 8'h7f;
             4'h9: seg = 8'h6f;
-            4'ha: seg = 8'b01000000;//ready
-            4'hb: seg = 8'b01000001;//up
-            4'hc: seg = 8'b01001000;//down
+            4'ha: seg = 8'b01000000;  //ready
+            4'hb: seg = 8'b01000001;  //up
+            4'hc: seg = 8'b01001000;  //down
             4'hd: seg = 8'h5e;
             4'he: seg = 8'h79;
-            4'hf: seg = 8'h71;
+            4'hf: seg = 8'h00;
             default: seg = 0;
         endcase
     end

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Jun  3 15:29:37 2024
+| Date         : Mon Jun  3 17:51:01 2024
 | Host         : DesktopG running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file TOP_control_sets_placed.rpt
 | Design       : TOP
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    13 |
-|    Minimum number of control sets                        |    13 |
+| Total control sets                                       |    21 |
+|    Minimum number of control sets                        |    21 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    48 |
+| Unused register locations in slices containing registers |    82 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    13 |
-| >= 0 to < 4        |     2 |
-| >= 4 to < 6        |     4 |
+| Total control sets |    21 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |     9 |
 | >= 6 to < 8        |     2 |
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     4 |
+| >= 16              |     6 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,34 +58,42 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              26 |           16 |
+| No           | No                    | No                     |              28 |           14 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              82 |           23 |
-| Yes          | No                    | No                     |              16 |            6 |
+| No           | Yes                   | No                     |             114 |           30 |
+| Yes          | No                    | No                     |              70 |           26 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              36 |            9 |
+| Yes          | Yes                   | No                     |              50 |           17 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+-----------------------------------+---------------------------------------------------+------------------------------+------------------+----------------+--------------+
-|            Clock Signal           |                   Enable Signal                   |       Set/Reset Signal       | Slice Load Count | Bel Load Count | Bels / Slice |
-+-----------------------------------+---------------------------------------------------+------------------------------+------------------+----------------+--------------+
-|  dynamic_led2/clk_div             |                                                   |                              |                1 |              1 |         1.00 |
-|  clk_50mhz_IBUF_BUFG              |                                                   |                              |                3 |              3 |         1.00 |
-|  key_deboucing/btnclk_reg_n_0     | key_deboucing/key[3]_i_2_n_0                      | key_deboucing/key[3]_i_1_n_0 |                1 |              4 |         4.00 |
-|  key_deboucing/row_reg[3]_i_2_n_0 |                                                   |                              |                2 |              4 |         2.00 |
-|  clk_BUFG                         | disp_state[3]_i_1_n_0                             |                              |                1 |              4 |         4.00 |
-|  clk_BUFG                         | state_led[4]_i_1_n_0                              |                              |                2 |              5 |         2.50 |
-|  key_deboucing/btnclk_reg_n_0     |                                                   |                              |                3 |              7 |         2.33 |
-|  key_deboucing/btnclk_reg_n_0     | key_deboucing/FSM_onehot_current_state[6]_i_1_n_0 |                              |                3 |              7 |         2.33 |
-|  clk_BUFG                         |                                                   |                              |                7 |             11 |         1.57 |
-|  clk_50mhz_IBUF_BUFG              |                                                   | clk_10hz/clk_out             |                7 |             25 |         3.57 |
-|  clk_50mhz_IBUF_BUFG              |                                                   | dynamic_led2/clk_div_0       |                7 |             25 |         3.57 |
-|  clk_50mhz_IBUF_BUFG              |                                                   | key_deboucing/btnclk         |                9 |             32 |         3.56 |
-|  clk_BUFG                         | delay_counter[0]_i_2_n_0                          | delay_counter0               |                8 |             32 |         4.00 |
-+-----------------------------------+---------------------------------------------------+------------------------------+------------------+----------------+--------------+
++-----------------------------------+---------------------------------------------------+----------------------------------+------------------+----------------+--------------+
+|            Clock Signal           |                   Enable Signal                   |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
++-----------------------------------+---------------------------------------------------+----------------------------------+------------------+----------------+--------------+
+|  clk_10hz__0_BUFG                 | ontime_cnt1[3]_i_1_n_0                            | ontime_cnt4                      |                2 |              2 |         1.00 |
+|  clk_50mhz_IBUF_BUFG              |                                                   |                                  |                3 |              3 |         1.00 |
+|  dynamic_led2/clk_div_reg_n_0     |                                                   |                                  |                1 |              3 |         3.00 |
+|  key_deboucing/btnclk_reg_n_0     | key_deboucing/key[3]_i_2_n_0                      | key_deboucing/key[3]_i_1_n_0     |                3 |              4 |         1.33 |
+|  key_deboucing/row_reg[3]_i_2_n_0 |                                                   |                                  |                1 |              4 |         4.00 |
+|  clk_10hz__0_BUFG                 | norm_down_cnt1[3]_i_1_n_0                         |                                  |                1 |              4 |         4.00 |
+|  clk_10hz__0_BUFG                 | disp_state[3]_i_1_n_0                             |                                  |                1 |              4 |         4.00 |
+|  clk_10hz__0_BUFG                 | norm_down_cnt0[3]_i_2_n_0                         | norm_down_cnt0[3]_i_1_n_0        |                2 |              4 |         2.00 |
+|  clk_10hz__0_BUFG                 | norm_up_cnt0[3]_i_2_n_0                           | norm_up_cnt0[3]_i_1_n_0          |                1 |              4 |         4.00 |
+|  clk_10hz__0_BUFG                 | norm_up_cnt1[3]_i_1_n_0                           |                                  |                1 |              4 |         4.00 |
+|  clk_10hz__0_BUFG                 | onday5                                            |                                  |                1 |              4 |         4.00 |
+|  clk_10hz__0_BUFG                 | state_led[4]_i_1_n_0                              |                                  |                2 |              5 |         2.50 |
+|  key_deboucing/btnclk_reg_n_0     |                                                   |                                  |                4 |              7 |         1.75 |
+|  key_deboucing/btnclk_reg_n_0     | key_deboucing/FSM_onehot_current_state[6]_i_1_n_0 |                                  |                3 |              7 |         2.33 |
+|  clk_10hz__0_BUFG                 |                                                   |                                  |                5 |             11 |         2.20 |
+|  clk_50mhz_IBUF_BUFG              |                                                   | clk_10hz/clk_div_cnt[24]_i_1_n_0 |                7 |             25 |         3.57 |
+|  clk_50mhz_IBUF_BUFG              |                                                   | dynamic_led2/clk_div             |                7 |             25 |         3.57 |
+|  clk_10hz__0_BUFG                 |                                                   | ontime_cnt1[3]_i_1_n_0           |                8 |             32 |         4.00 |
+|  clk_50mhz_IBUF_BUFG              |                                                   | key_deboucing/btnclk             |                8 |             32 |         4.00 |
+|  clk_10hz__0_BUFG                 | delay_counter[0]_i_2_n_0                          | delay_counter                    |                9 |             36 |         4.00 |
+|  clk_10hz__0_BUFG                 | ontime_cnt1[3]_i_1_n_0                            |                                  |               17 |             42 |         2.47 |
++-----------------------------------+---------------------------------------------------+----------------------------------+------------------+----------------+--------------+
 
 
