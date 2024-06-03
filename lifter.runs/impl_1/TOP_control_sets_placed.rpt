@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Sun Jun  2 19:05:05 2024
+| Date         : Mon Jun  3 15:29:37 2024
 | Host         : DesktopG running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file TOP_control_sets_placed.rpt
 | Design       : TOP
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    12 |
-|    Minimum number of control sets                        |    12 |
+| Total control sets                                       |    13 |
+|    Minimum number of control sets                        |    13 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    45 |
+| Unused register locations in slices containing registers |    48 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,9 +39,9 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    12 |
+| Total control sets |    13 |
 | >= 0 to < 4        |     2 |
-| >= 4 to < 6        |     3 |
+| >= 4 to < 6        |     4 |
 | >= 6 to < 8        |     2 |
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     1 |
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              26 |           17 |
+| No           | No                    | No                     |              26 |           16 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              82 |           23 |
-| Yes          | No                    | No                     |              11 |            5 |
+| Yes          | No                    | No                     |              16 |            6 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |              36 |            9 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -75,10 +75,11 @@ Table of Contents
 +-----------------------------------+---------------------------------------------------+------------------------------+------------------+----------------+--------------+
 |  dynamic_led2/clk_div             |                                                   |                              |                1 |              1 |         1.00 |
 |  clk_50mhz_IBUF_BUFG              |                                                   |                              |                3 |              3 |         1.00 |
-|  key_deboucing/row_reg[3]_i_2_n_0 |                                                   |                              |                2 |              4 |         2.00 |
 |  key_deboucing/btnclk_reg_n_0     | key_deboucing/key[3]_i_2_n_0                      | key_deboucing/key[3]_i_1_n_0 |                1 |              4 |         4.00 |
-|  clk_BUFG                         | disp_state[3]_i_1_n_0                             |                              |                2 |              4 |         2.00 |
-|  key_deboucing/btnclk_reg_n_0     |                                                   |                              |                4 |              7 |         1.75 |
+|  key_deboucing/row_reg[3]_i_2_n_0 |                                                   |                              |                2 |              4 |         2.00 |
+|  clk_BUFG                         | disp_state[3]_i_1_n_0                             |                              |                1 |              4 |         4.00 |
+|  clk_BUFG                         | state_led[4]_i_1_n_0                              |                              |                2 |              5 |         2.50 |
+|  key_deboucing/btnclk_reg_n_0     |                                                   |                              |                3 |              7 |         2.33 |
 |  key_deboucing/btnclk_reg_n_0     | key_deboucing/FSM_onehot_current_state[6]_i_1_n_0 |                              |                3 |              7 |         2.33 |
 |  clk_BUFG                         |                                                   |                              |                7 |             11 |         1.57 |
 |  clk_50mhz_IBUF_BUFG              |                                                   | clk_10hz/clk_out             |                7 |             25 |         3.57 |
