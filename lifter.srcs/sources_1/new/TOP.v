@@ -56,9 +56,9 @@ module TOP (
     reg     [3:0] tim_disp0 = 4'b0000;
     reg     [3:0] tim_disp1 = 4'b0000;
     reg     [3:0] tim_disp2 = 4'b0000;
-    reg     [7:0] seg_reg;   
+    reg     [7:0] seg_reg;
     reg     [5:0] dig_reg;
-    wire    [7:0] seg_wire;  
+    wire    [7:0] seg_wire;
     wire    [5:0] dig_wire;
     reg     [3:0] ontime_cnt0 = 4'b0000;
     reg     [3:0] ontime_cnt1 = 4'b0000;
@@ -110,10 +110,9 @@ module TOP (
     always @(*) begin
         seg_reg <= seg_wire;
         dig_reg <= dig_wire;
-        if((dig == 6'b011111)&&(page_sel == 2))begin
+        if ((dig == 6'b011111) && (page_sel == 2)) begin
             seg_reg <= seg_wire | 8'h80;
-        end
-        else if (((dig == 6'b111011)||(dig == 6'b101111))&&(page_sel == 3)) begin
+        end else if (((dig == 6'b111011) || (dig == 6'b101111)) && (page_sel == 3)) begin
             seg_reg <= seg_wire | 8'h80;
         end
     end
@@ -143,63 +142,55 @@ module TOP (
     always @(posedge clk_10hz) begin
         ontime_div = ontime_div + 1;
         if (ontime_div == 100) begin
-            ontime_div = 0;
+            ontime_div  = 0;
             ontime_cnt0 = ontime_cnt0 + 1;
-        if (ontime_cnt0 == 10) begin
-            ontime_cnt0 = 0;
-            ontime_cnt1 = ontime_cnt1 + 1;
-        end
-        if (ontime_cnt1 == 6) begin
-            ontime_cnt1 = 0;
-            ontime_cnt2 = ontime_cnt2 + 1;
-        end
-        if (ontime_cnt2 == 10) begin
-            ontime_cnt2 = 0;
-            ontime_cnt3 = ontime_cnt3 + 1;
-        end
-        if (ontime_cnt3 == 6) begin
-            ontime_cnt3 = 0;
-            ontime_cnt4 = ontime_cnt4 + 1;
-        end
-        if (ontime_cnt4 == 10) begin
-            ontime_cnt4 = 0;
-            ontime_cnt5 = ontime_cnt5 + 1;
-        end
-        if ((ontime_cnt5 == 2)&&(ontime_cnt4 == 4)) begin
-            ontime_cnt5 = 0;
-            ontime_cnt4 = 0;
-            onday0 = onday0 + 1;
-        end
-        if (onday0 == 10) begin
-            onday0 = 0;
-            onday1 = onday1 + 1;
-        end
-        if (onday1 == 10) begin
-            onday1 = 0;
-            onday2 = onday2 + 1;
-        end
-        if (onday2 == 10) begin
-            onday2 = 0;
-            onday3 = onday3 + 1;
-        end
-        if (onday3 == 10) begin
-            onday3 = 0;
-            onday4 = onday4 + 1;
-        end
-        if (onday4 == 10) begin
-            onday4 = 0;
-            onday5 = onday5 + 1;
-        end
+            if (ontime_cnt0 == 10) begin
+                ontime_cnt0 = 0;
+                ontime_cnt1 = ontime_cnt1 + 1;
+            end
+            if (ontime_cnt1 == 6) begin
+                ontime_cnt1 = 0;
+                ontime_cnt2 = ontime_cnt2 + 1;
+            end
+            if (ontime_cnt2 == 10) begin
+                ontime_cnt2 = 0;
+                ontime_cnt3 = ontime_cnt3 + 1;
+            end
+            if (ontime_cnt3 == 6) begin
+                ontime_cnt3 = 0;
+                ontime_cnt4 = ontime_cnt4 + 1;
+            end
+            if (ontime_cnt4 == 10) begin
+                ontime_cnt4 = 0;
+                ontime_cnt5 = ontime_cnt5 + 1;
+            end
+            if ((ontime_cnt5 == 2) && (ontime_cnt4 == 4)) begin
+                ontime_cnt5 = 0;
+                ontime_cnt4 = 0;
+                onday0 = onday0 + 1;
+            end
+            if (onday0 == 10) begin
+                onday0 = 0;
+                onday1 = onday1 + 1;
+            end
+            if (onday1 == 10) begin
+                onday1 = 0;
+                onday2 = onday2 + 1;
+            end
+            if (onday2 == 10) begin
+                onday2 = 0;
+                onday3 = onday3 + 1;
+            end
+            if (onday3 == 10) begin
+                onday3 = 0;
+                onday4 = onday4 + 1;
+            end
+            if (onday4 == 10) begin
+                onday4 = 0;
+                onday5 = onday5 + 1;
+            end
         end
     end
-
-    // always @(*) begin
-    //     ontime_cnt0 = ontime_cnt - (ontime_cnt/10)*10;
-    //     ontime_cnt1 = ontime_cnt/60 - (ontime_cnt/600)*10;
-    //     ontime_cnt2 = ontime_cnt/600 - (ontime_cnt/6000)*10;
-    //     ontime_cnt3 = ontime_cnt/3600 - (ontime_cnt/36000)*10;
-    //     ontime_cnt4 = ontime_cnt/36000 - (ontime_cnt/360000)*10;
-    // end
 
     always @(*) begin
         case (page_sel)
@@ -370,6 +361,10 @@ module TOP (
                 end
                 if (sw[0] == 0) begin
                     led <= 4'b0000;
+                end else if (key_buf == 4) begin
+                    led[1] <= 1;
+                end else if (key_buf == 7) begin
+                    led[3] <= 1;
                 end else if (key_buf == 0) begin
                     led[0] <= 1;
                 end else if (key_buf == 3) begin
@@ -410,6 +405,10 @@ module TOP (
                     led[1] <= 1;
                 end else if (key_buf == 7) begin
                     led[3] <= 1;
+                end else if (key_buf == 0) begin
+                    led[0] <= 1;
+                end else if (key_buf == 3) begin
+                    led[2] <= 1;
                 end
                 if (delay_counter <= 60) begin
                     state_led <= 5'b00001;

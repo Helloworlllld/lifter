@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Mon Jun  3 17:51:00 2024
+| Date         : Mon Jun  3 18:33:49 2024
 | Host         : DesktopG
 | Design       : design_1
 | Device       : xc7a35t-ftg256-2--

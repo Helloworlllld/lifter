@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Jun  3 17:51:13 2024
+| Date         : Mon Jun  3 18:34:03 2024
 | Host         : DesktopG running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file TOP_timing_summary_routed.rpt -pb TOP_timing_summary_routed.pb -rpx TOP_timing_summary_routed.rpx -warn_on_violation
 | Design       : TOP
@@ -241,105 +241,222 @@ Max Delay Paths
 Slack:                    inf
   Source:                 delay_counter_reg[0]/C
                             (rising edge-triggered cell FDRE)
+  Destination:            seg[6]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        32.076ns  (logic 11.265ns (35.121%)  route 20.810ns (64.879%))
+  Logic Levels:           38  (CARRY4=19 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y7           FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
+    SLICE_X3Y7           FDRE (Prop_fdre_C_Q)         0.379     0.379 f  delay_counter_reg[0]/Q
+                         net (fo=68, routed)          1.917     2.296    dynamic_led2/delay_counter_reg[0]
+    SLICE_X14Y1          LUT1 (Prop_lut1_I0_O)        0.105     2.401 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
+                         net (fo=2, routed)           0.442     2.844    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
+    SLICE_X13Y2          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     3.324 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
+                         net (fo=1, routed)           0.000     3.324    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
+    SLICE_X13Y3          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.422 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
+                         net (fo=1, routed)           0.000     3.422    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
+    SLICE_X13Y4          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.520 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
+                         net (fo=1, routed)           0.000     3.520    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
+    SLICE_X13Y5          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.618 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
+                         net (fo=1, routed)           0.000     3.618    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
+    SLICE_X13Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.716 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
+                         net (fo=1, routed)           0.000     3.716    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
+    SLICE_X13Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.814 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
+                         net (fo=1, routed)           0.000     3.814    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
+    SLICE_X13Y8          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180     3.994 r  dynamic_led2/seg_OBUF[6]_inst_i_137/O[0]
+                         net (fo=20, routed)          1.476     5.470    dynamic_led2/tim_disp07[25]
+    SLICE_X30Y13         LUT3 (Prop_lut3_I0_O)        0.249     5.719 r  dynamic_led2/seg_OBUF[6]_inst_i_341/O
+                         net (fo=50, routed)          3.235     8.954    dynamic_led2/seg_OBUF[6]_inst_i_341_n_0
+    SLICE_X9Y6           LUT6 (Prop_lut6_I3_O)        0.105     9.059 r  dynamic_led2/seg_OBUF[6]_inst_i_799/O
+                         net (fo=1, routed)           0.000     9.059    dynamic_led2/seg_OBUF[6]_inst_i_799_n_0
+    SLICE_X9Y6           CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457     9.516 r  dynamic_led2/seg_OBUF[6]_inst_i_610/CO[3]
+                         net (fo=1, routed)           0.000     9.516    dynamic_led2/seg_OBUF[6]_inst_i_610_n_0
+    SLICE_X9Y7           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.614 r  dynamic_led2/seg_OBUF[6]_inst_i_613/CO[3]
+                         net (fo=1, routed)           0.000     9.614    dynamic_led2/seg_OBUF[6]_inst_i_613_n_0
+    SLICE_X9Y8           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.712 r  dynamic_led2/seg_OBUF[6]_inst_i_946/CO[3]
+                         net (fo=1, routed)           0.000     9.712    dynamic_led2/seg_OBUF[6]_inst_i_946_n_0
+    SLICE_X9Y9           CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.132     9.844 f  dynamic_led2/seg_OBUF[6]_inst_i_719/CO[1]
+                         net (fo=24, routed)          0.711    10.555    dynamic_led2/seg_OBUF[6]_inst_i_719_n_2
+    SLICE_X11Y9          LUT3 (Prop_lut3_I0_O)        0.294    10.849 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
+                         net (fo=2, routed)           0.695    11.544    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
+    SLICE_X11Y9          LUT4 (Prop_lut4_I3_O)        0.267    11.811 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
+                         net (fo=1, routed)           0.000    11.811    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
+    SLICE_X11Y9          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    12.268 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
+                         net (fo=1, routed)           0.000    12.268    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
+    SLICE_X11Y10         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.265    12.533 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[1]
+                         net (fo=2, routed)           0.787    13.320    dynamic_led2/seg_OBUF[6]_inst_i_548_n_6
+    SLICE_X8Y10          LUT3 (Prop_lut3_I0_O)        0.261    13.581 r  dynamic_led2/seg_OBUF[6]_inst_i_540/O
+                         net (fo=2, routed)           0.697    14.278    dynamic_led2/seg_OBUF[6]_inst_i_540_n_0
+    SLICE_X8Y10          LUT4 (Prop_lut4_I3_O)        0.283    14.561 r  dynamic_led2/seg_OBUF[6]_inst_i_544/O
+                         net (fo=1, routed)           0.000    14.561    dynamic_led2/seg_OBUF[6]_inst_i_544_n_0
+    SLICE_X8Y10          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    14.877 r  dynamic_led2/seg_OBUF[6]_inst_i_319/CO[3]
+                         net (fo=1, routed)           0.000    14.877    dynamic_led2/seg_OBUF[6]_inst_i_319_n_0
+    SLICE_X8Y11          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.257    15.134 r  dynamic_led2/seg_OBUF[6]_inst_i_169/O[1]
+                         net (fo=3, routed)           1.012    16.146    dynamic_led2/seg_OBUF[6]_inst_i_169_n_6
+    SLICE_X6Y12          LUT2 (Prop_lut2_I1_O)        0.245    16.391 r  dynamic_led2/seg_OBUF[6]_inst_i_312/O
+                         net (fo=1, routed)           0.000    16.391    dynamic_led2/seg_OBUF[6]_inst_i_312_n_0
+    SLICE_X6Y12          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    16.707 r  dynamic_led2/seg_OBUF[6]_inst_i_163/CO[3]
+                         net (fo=1, routed)           0.000    16.707    dynamic_led2/seg_OBUF[6]_inst_i_163_n_0
+    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.199    16.906 r  dynamic_led2/seg_OBUF[6]_inst_i_109/O[2]
+                         net (fo=3, routed)           0.785    17.691    dynamic_led2/seg_OBUF[6]_inst_i_109_n_5
+    SLICE_X4Y11          LUT4 (Prop_lut4_I0_O)        0.244    17.935 r  dynamic_led2/seg_OBUF[6]_inst_i_179/O
+                         net (fo=1, routed)           0.444    18.379    dynamic_led2/seg_OBUF[6]_inst_i_179_n_0
+    SLICE_X2Y11          CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.327    18.706 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
+                         net (fo=1, routed)           0.000    18.706    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
+    SLICE_X2Y12          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.131    18.837 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
+                         net (fo=5, routed)           0.841    19.678    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
+    SLICE_X7Y15          LUT4 (Prop_lut4_I0_O)        0.291    19.969 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
+                         net (fo=3, routed)           0.684    20.652    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
+    SLICE_X8Y14          LUT6 (Prop_lut6_I4_O)        0.267    20.919 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
+                         net (fo=5, routed)           1.421    22.340    dynamic_led2/C[1]
+    SLICE_X28Y15         LUT6 (Prop_lut6_I0_O)        0.105    22.445 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
+                         net (fo=2, routed)           0.921    23.366    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
+    SLICE_X13Y16         LUT6 (Prop_lut6_I4_O)        0.105    23.471 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
+                         net (fo=1, routed)           0.648    24.119    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
+    SLICE_X12Y17         LUT6 (Prop_lut6_I5_O)        0.105    24.224 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
+                         net (fo=1, routed)           0.518    24.742    dynamic_led2/disp_right4[2]
+    SLICE_X8Y21          LUT5 (Prop_lut5_I1_O)        0.105    24.847 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
+                         net (fo=1, routed)           0.666    25.513    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
+    SLICE_X8Y22          LUT6 (Prop_lut6_I1_O)        0.264    25.777 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
+                         net (fo=7, routed)           1.006    26.783    dynamic_led2/sel0[2]
+    SLICE_X0Y23          LUT4 (Prop_lut4_I2_O)        0.105    26.888 r  dynamic_led2/seg_OBUF[6]_inst_i_1/O
+                         net (fo=1, routed)           1.904    28.792    seg_OBUF[6]
+    M14                  OBUF (Prop_obuf_I_O)         3.283    32.076 r  seg_OBUF[6]_inst/O
+                         net (fo=0)                   0.000    32.076    seg[6]
+    M14                                                               r  seg[6] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 delay_counter_reg[0]/C
+                            (rising edge-triggered cell FDRE)
   Destination:            seg[4]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        32.453ns  (logic 11.502ns (35.442%)  route 20.951ns (64.558%))
-  Logic Levels:           36  (CARRY4=17 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
+  Data Path Delay:        32.035ns  (logic 11.423ns (35.659%)  route 20.611ns (64.341%))
+  Logic Levels:           38  (CARRY4=19 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X8Y16          FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
-    SLICE_X8Y16          FDRE (Prop_fdre_C_Q)         0.433     0.433 f  delay_counter_reg[0]/Q
-                         net (fo=68, routed)          1.205     1.638    dynamic_led2/delay_counter_reg[0]
-    SLICE_X11Y1          LUT1 (Prop_lut1_I0_O)        0.110     1.748 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
-                         net (fo=2, routed)           0.795     2.543    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
-    SLICE_X6Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.657     3.200 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
-                         net (fo=1, routed)           0.000     3.200    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
-    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.300 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
-                         net (fo=1, routed)           0.000     3.300    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
-    SLICE_X6Y14          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.400 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
-                         net (fo=1, routed)           0.000     3.400    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
-    SLICE_X6Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.500 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
-                         net (fo=1, routed)           0.000     3.500    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
-    SLICE_X6Y16          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.600 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
-                         net (fo=1, routed)           0.000     3.600    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
-    SLICE_X6Y17          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.700 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
-                         net (fo=1, routed)           0.000     3.700    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
-    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.800 r  dynamic_led2/seg_OBUF[6]_inst_i_137/CO[3]
-                         net (fo=1, routed)           0.000     3.800    dynamic_led2/seg_OBUF[6]_inst_i_137_n_0
-    SLICE_X6Y19          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.257     4.057 r  dynamic_led2/seg_OBUF[6]_inst_i_97/O[1]
-                         net (fo=51, routed)          2.272     6.329    dynamic_led2/tim_disp07[30]
-    SLICE_X13Y24         LUT3 (Prop_lut3_I0_O)        0.245     6.574 r  dynamic_led2/seg_OBUF[6]_inst_i_511/O
-                         net (fo=18, routed)          2.105     8.678    dynamic_led2/seg_OBUF[6]_inst_i_511_n_0
-    SLICE_X3Y8           LUT6 (Prop_lut6_I0_O)        0.105     8.783 r  dynamic_led2/seg_OBUF[6]_inst_i_804/O
-                         net (fo=1, routed)           0.000     8.783    dynamic_led2/seg_OBUF[6]_inst_i_804_n_0
-    SLICE_X3Y8           CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.440     9.223 r  dynamic_led2/seg_OBUF[6]_inst_i_611/CO[3]
-                         net (fo=1, routed)           0.000     9.223    dynamic_led2/seg_OBUF[6]_inst_i_611_n_0
-    SLICE_X3Y9           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.098     9.321 f  dynamic_led2/seg_OBUF[6]_inst_i_614/CO[3]
-                         net (fo=36, routed)          1.307    10.628    dynamic_led2/seg_OBUF[6]_inst_i_614_n_0
-    SLICE_X5Y11          LUT3 (Prop_lut3_I2_O)        0.119    10.747 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
-                         net (fo=2, routed)           0.854    11.601    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
-    SLICE_X5Y11          LUT4 (Prop_lut4_I3_O)        0.267    11.868 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
-                         net (fo=1, routed)           0.000    11.868    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
-    SLICE_X5Y11          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.457    12.325 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
-                         net (fo=1, routed)           0.000    12.325    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
-    SLICE_X5Y12          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.181    12.506 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[0]
-                         net (fo=2, routed)           0.769    13.276    dynamic_led2/seg_OBUF[6]_inst_i_548_n_7
-    SLICE_X7Y12          LUT3 (Prop_lut3_I0_O)        0.263    13.539 r  dynamic_led2/seg_OBUF[6]_inst_i_541/O
-                         net (fo=2, routed)           0.857    14.396    dynamic_led2/seg_OBUF[6]_inst_i_541_n_0
-    SLICE_X7Y12          LUT4 (Prop_lut4_I3_O)        0.267    14.663 r  dynamic_led2/seg_OBUF[6]_inst_i_545/O
-                         net (fo=1, routed)           0.000    14.663    dynamic_led2/seg_OBUF[6]_inst_i_545_n_0
-    SLICE_X7Y12          CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.481    15.144 r  dynamic_led2/seg_OBUF[6]_inst_i_319/O[2]
-                         net (fo=3, routed)           1.002    16.146    dynamic_led2/seg_OBUF[6]_inst_i_319_n_5
-    SLICE_X3Y18          LUT2 (Prop_lut2_I0_O)        0.253    16.399 r  dynamic_led2/seg_OBUF[6]_inst_i_524/O
-                         net (fo=1, routed)           0.000    16.399    dynamic_led2/seg_OBUF[6]_inst_i_524_n_0
-    SLICE_X3Y18          CARRY4 (Prop_carry4_S[1]_O[3])
-                                                      0.530    16.929 r  dynamic_led2/seg_OBUF[6]_inst_i_310/O[3]
-                         net (fo=3, routed)           1.240    18.169    dynamic_led2/seg_OBUF[6]_inst_i_310_n_4
-    SLICE_X4Y14          LUT4 (Prop_lut4_I0_O)        0.257    18.426 r  dynamic_led2/seg_OBUF[6]_inst_i_334/O
-                         net (fo=1, routed)           0.384    18.810    dynamic_led2/seg_OBUF[6]_inst_i_334_n_0
-    SLICE_X2Y14          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.457    19.267 r  dynamic_led2/seg_OBUF[6]_inst_i_178/CO[3]
-                         net (fo=1, routed)           0.000    19.267    dynamic_led2/seg_OBUF[6]_inst_i_178_n_0
-    SLICE_X2Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100    19.367 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
-                         net (fo=1, routed)           0.000    19.367    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
-    SLICE_X2Y16          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.131    19.498 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
-                         net (fo=5, routed)           0.810    20.308    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
-    SLICE_X5Y18          LUT4 (Prop_lut4_I0_O)        0.287    20.595 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
-                         net (fo=3, routed)           0.684    21.279    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
-    SLICE_X5Y19          LUT6 (Prop_lut6_I4_O)        0.267    21.546 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
-                         net (fo=5, routed)           0.973    22.519    dynamic_led2/C[1]
-    SLICE_X9Y21          LUT6 (Prop_lut6_I0_O)        0.105    22.624 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
-                         net (fo=2, routed)           0.751    23.374    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
-    SLICE_X7Y21          LUT6 (Prop_lut6_I4_O)        0.105    23.479 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
-                         net (fo=1, routed)           0.784    24.264    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
-    SLICE_X5Y24          LUT6 (Prop_lut6_I5_O)        0.105    24.369 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
-                         net (fo=1, routed)           0.820    25.189    dynamic_led2/disp_right4[2]
-    SLICE_X2Y26          LUT5 (Prop_lut5_I1_O)        0.115    25.304 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
-                         net (fo=1, routed)           0.655    25.959    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
-    SLICE_X2Y27          LUT6 (Prop_lut6_I1_O)        0.264    26.223 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
-                         net (fo=7, routed)           0.640    26.863    dynamic_led2/sel0[2]
-    SLICE_X0Y28          LUT4 (Prop_lut4_I0_O)        0.125    26.988 r  dynamic_led2/seg_OBUF[4]_inst_i_1/O
-                         net (fo=1, routed)           2.044    29.032    seg_OBUF[4]
-    K12                  OBUF (Prop_obuf_I_O)         3.421    32.453 r  seg_OBUF[4]_inst/O
-                         net (fo=0)                   0.000    32.453    seg[4]
+    SLICE_X3Y7           FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
+    SLICE_X3Y7           FDRE (Prop_fdre_C_Q)         0.379     0.379 f  delay_counter_reg[0]/Q
+                         net (fo=68, routed)          1.917     2.296    dynamic_led2/delay_counter_reg[0]
+    SLICE_X14Y1          LUT1 (Prop_lut1_I0_O)        0.105     2.401 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
+                         net (fo=2, routed)           0.442     2.844    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
+    SLICE_X13Y2          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     3.324 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
+                         net (fo=1, routed)           0.000     3.324    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
+    SLICE_X13Y3          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.422 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
+                         net (fo=1, routed)           0.000     3.422    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
+    SLICE_X13Y4          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.520 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
+                         net (fo=1, routed)           0.000     3.520    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
+    SLICE_X13Y5          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.618 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
+                         net (fo=1, routed)           0.000     3.618    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
+    SLICE_X13Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.716 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
+                         net (fo=1, routed)           0.000     3.716    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
+    SLICE_X13Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.814 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
+                         net (fo=1, routed)           0.000     3.814    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
+    SLICE_X13Y8          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180     3.994 r  dynamic_led2/seg_OBUF[6]_inst_i_137/O[0]
+                         net (fo=20, routed)          1.476     5.470    dynamic_led2/tim_disp07[25]
+    SLICE_X30Y13         LUT3 (Prop_lut3_I0_O)        0.249     5.719 r  dynamic_led2/seg_OBUF[6]_inst_i_341/O
+                         net (fo=50, routed)          3.235     8.954    dynamic_led2/seg_OBUF[6]_inst_i_341_n_0
+    SLICE_X9Y6           LUT6 (Prop_lut6_I3_O)        0.105     9.059 r  dynamic_led2/seg_OBUF[6]_inst_i_799/O
+                         net (fo=1, routed)           0.000     9.059    dynamic_led2/seg_OBUF[6]_inst_i_799_n_0
+    SLICE_X9Y6           CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457     9.516 r  dynamic_led2/seg_OBUF[6]_inst_i_610/CO[3]
+                         net (fo=1, routed)           0.000     9.516    dynamic_led2/seg_OBUF[6]_inst_i_610_n_0
+    SLICE_X9Y7           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.614 r  dynamic_led2/seg_OBUF[6]_inst_i_613/CO[3]
+                         net (fo=1, routed)           0.000     9.614    dynamic_led2/seg_OBUF[6]_inst_i_613_n_0
+    SLICE_X9Y8           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.712 r  dynamic_led2/seg_OBUF[6]_inst_i_946/CO[3]
+                         net (fo=1, routed)           0.000     9.712    dynamic_led2/seg_OBUF[6]_inst_i_946_n_0
+    SLICE_X9Y9           CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.132     9.844 f  dynamic_led2/seg_OBUF[6]_inst_i_719/CO[1]
+                         net (fo=24, routed)          0.711    10.555    dynamic_led2/seg_OBUF[6]_inst_i_719_n_2
+    SLICE_X11Y9          LUT3 (Prop_lut3_I0_O)        0.294    10.849 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
+                         net (fo=2, routed)           0.695    11.544    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
+    SLICE_X11Y9          LUT4 (Prop_lut4_I3_O)        0.267    11.811 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
+                         net (fo=1, routed)           0.000    11.811    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
+    SLICE_X11Y9          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    12.268 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
+                         net (fo=1, routed)           0.000    12.268    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
+    SLICE_X11Y10         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.265    12.533 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[1]
+                         net (fo=2, routed)           0.787    13.320    dynamic_led2/seg_OBUF[6]_inst_i_548_n_6
+    SLICE_X8Y10          LUT3 (Prop_lut3_I0_O)        0.261    13.581 r  dynamic_led2/seg_OBUF[6]_inst_i_540/O
+                         net (fo=2, routed)           0.697    14.278    dynamic_led2/seg_OBUF[6]_inst_i_540_n_0
+    SLICE_X8Y10          LUT4 (Prop_lut4_I3_O)        0.283    14.561 r  dynamic_led2/seg_OBUF[6]_inst_i_544/O
+                         net (fo=1, routed)           0.000    14.561    dynamic_led2/seg_OBUF[6]_inst_i_544_n_0
+    SLICE_X8Y10          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    14.877 r  dynamic_led2/seg_OBUF[6]_inst_i_319/CO[3]
+                         net (fo=1, routed)           0.000    14.877    dynamic_led2/seg_OBUF[6]_inst_i_319_n_0
+    SLICE_X8Y11          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.257    15.134 r  dynamic_led2/seg_OBUF[6]_inst_i_169/O[1]
+                         net (fo=3, routed)           1.012    16.146    dynamic_led2/seg_OBUF[6]_inst_i_169_n_6
+    SLICE_X6Y12          LUT2 (Prop_lut2_I1_O)        0.245    16.391 r  dynamic_led2/seg_OBUF[6]_inst_i_312/O
+                         net (fo=1, routed)           0.000    16.391    dynamic_led2/seg_OBUF[6]_inst_i_312_n_0
+    SLICE_X6Y12          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    16.707 r  dynamic_led2/seg_OBUF[6]_inst_i_163/CO[3]
+                         net (fo=1, routed)           0.000    16.707    dynamic_led2/seg_OBUF[6]_inst_i_163_n_0
+    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.199    16.906 r  dynamic_led2/seg_OBUF[6]_inst_i_109/O[2]
+                         net (fo=3, routed)           0.785    17.691    dynamic_led2/seg_OBUF[6]_inst_i_109_n_5
+    SLICE_X4Y11          LUT4 (Prop_lut4_I0_O)        0.244    17.935 r  dynamic_led2/seg_OBUF[6]_inst_i_179/O
+                         net (fo=1, routed)           0.444    18.379    dynamic_led2/seg_OBUF[6]_inst_i_179_n_0
+    SLICE_X2Y11          CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.327    18.706 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
+                         net (fo=1, routed)           0.000    18.706    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
+    SLICE_X2Y12          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.131    18.837 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
+                         net (fo=5, routed)           0.841    19.678    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
+    SLICE_X7Y15          LUT4 (Prop_lut4_I0_O)        0.291    19.969 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
+                         net (fo=3, routed)           0.684    20.652    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
+    SLICE_X8Y14          LUT6 (Prop_lut6_I4_O)        0.267    20.919 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
+                         net (fo=5, routed)           1.421    22.340    dynamic_led2/C[1]
+    SLICE_X28Y15         LUT6 (Prop_lut6_I0_O)        0.105    22.445 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
+                         net (fo=2, routed)           0.921    23.366    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
+    SLICE_X13Y16         LUT6 (Prop_lut6_I4_O)        0.105    23.471 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
+                         net (fo=1, routed)           0.648    24.119    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
+    SLICE_X12Y17         LUT6 (Prop_lut6_I5_O)        0.105    24.224 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
+                         net (fo=1, routed)           0.518    24.742    dynamic_led2/disp_right4[2]
+    SLICE_X8Y21          LUT5 (Prop_lut5_I1_O)        0.105    24.847 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
+                         net (fo=1, routed)           0.666    25.513    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
+    SLICE_X8Y22          LUT6 (Prop_lut6_I1_O)        0.264    25.777 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
+                         net (fo=7, routed)           0.744    26.521    dynamic_led2/sel0[2]
+    SLICE_X0Y23          LUT4 (Prop_lut4_I0_O)        0.125    26.646 r  dynamic_led2/seg_OBUF[4]_inst_i_1/O
+                         net (fo=1, routed)           1.967    28.613    seg_OBUF[4]
+    K12                  OBUF (Prop_obuf_I_O)         3.421    32.035 r  seg_OBUF[4]_inst/O
+                         net (fo=0)                   0.000    32.035    seg[4]
     K12                                                               r  seg[4] (OUT)
   -------------------------------------------------------------------    -------------------
 
@@ -350,522 +467,108 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        32.207ns  (logic 11.525ns (35.785%)  route 20.681ns (64.215%))
-  Logic Levels:           36  (CARRY4=17 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
+  Data Path Delay:        31.996ns  (logic 11.446ns (35.774%)  route 20.550ns (64.226%))
+  Logic Levels:           38  (CARRY4=19 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X8Y16          FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
-    SLICE_X8Y16          FDRE (Prop_fdre_C_Q)         0.433     0.433 f  delay_counter_reg[0]/Q
-                         net (fo=68, routed)          1.205     1.638    dynamic_led2/delay_counter_reg[0]
-    SLICE_X11Y1          LUT1 (Prop_lut1_I0_O)        0.110     1.748 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
-                         net (fo=2, routed)           0.795     2.543    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
-    SLICE_X6Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.657     3.200 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
-                         net (fo=1, routed)           0.000     3.200    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
-    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.300 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
-                         net (fo=1, routed)           0.000     3.300    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
-    SLICE_X6Y14          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.400 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
-                         net (fo=1, routed)           0.000     3.400    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
-    SLICE_X6Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.500 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
-                         net (fo=1, routed)           0.000     3.500    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
-    SLICE_X6Y16          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.600 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
-                         net (fo=1, routed)           0.000     3.600    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
-    SLICE_X6Y17          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.700 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
-                         net (fo=1, routed)           0.000     3.700    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
-    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.800 r  dynamic_led2/seg_OBUF[6]_inst_i_137/CO[3]
-                         net (fo=1, routed)           0.000     3.800    dynamic_led2/seg_OBUF[6]_inst_i_137_n_0
-    SLICE_X6Y19          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.257     4.057 r  dynamic_led2/seg_OBUF[6]_inst_i_97/O[1]
-                         net (fo=51, routed)          2.272     6.329    dynamic_led2/tim_disp07[30]
-    SLICE_X13Y24         LUT3 (Prop_lut3_I0_O)        0.245     6.574 r  dynamic_led2/seg_OBUF[6]_inst_i_511/O
-                         net (fo=18, routed)          2.105     8.678    dynamic_led2/seg_OBUF[6]_inst_i_511_n_0
-    SLICE_X3Y8           LUT6 (Prop_lut6_I0_O)        0.105     8.783 r  dynamic_led2/seg_OBUF[6]_inst_i_804/O
-                         net (fo=1, routed)           0.000     8.783    dynamic_led2/seg_OBUF[6]_inst_i_804_n_0
-    SLICE_X3Y8           CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.440     9.223 r  dynamic_led2/seg_OBUF[6]_inst_i_611/CO[3]
-                         net (fo=1, routed)           0.000     9.223    dynamic_led2/seg_OBUF[6]_inst_i_611_n_0
-    SLICE_X3Y9           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.098     9.321 f  dynamic_led2/seg_OBUF[6]_inst_i_614/CO[3]
-                         net (fo=36, routed)          1.307    10.628    dynamic_led2/seg_OBUF[6]_inst_i_614_n_0
-    SLICE_X5Y11          LUT3 (Prop_lut3_I2_O)        0.119    10.747 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
-                         net (fo=2, routed)           0.854    11.601    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
-    SLICE_X5Y11          LUT4 (Prop_lut4_I3_O)        0.267    11.868 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
-                         net (fo=1, routed)           0.000    11.868    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
-    SLICE_X5Y11          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.457    12.325 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
-                         net (fo=1, routed)           0.000    12.325    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
-    SLICE_X5Y12          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.181    12.506 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[0]
-                         net (fo=2, routed)           0.769    13.276    dynamic_led2/seg_OBUF[6]_inst_i_548_n_7
-    SLICE_X7Y12          LUT3 (Prop_lut3_I0_O)        0.263    13.539 r  dynamic_led2/seg_OBUF[6]_inst_i_541/O
-                         net (fo=2, routed)           0.857    14.396    dynamic_led2/seg_OBUF[6]_inst_i_541_n_0
-    SLICE_X7Y12          LUT4 (Prop_lut4_I3_O)        0.267    14.663 r  dynamic_led2/seg_OBUF[6]_inst_i_545/O
-                         net (fo=1, routed)           0.000    14.663    dynamic_led2/seg_OBUF[6]_inst_i_545_n_0
-    SLICE_X7Y12          CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.481    15.144 r  dynamic_led2/seg_OBUF[6]_inst_i_319/O[2]
-                         net (fo=3, routed)           1.002    16.146    dynamic_led2/seg_OBUF[6]_inst_i_319_n_5
-    SLICE_X3Y18          LUT2 (Prop_lut2_I0_O)        0.253    16.399 r  dynamic_led2/seg_OBUF[6]_inst_i_524/O
-                         net (fo=1, routed)           0.000    16.399    dynamic_led2/seg_OBUF[6]_inst_i_524_n_0
-    SLICE_X3Y18          CARRY4 (Prop_carry4_S[1]_O[3])
-                                                      0.530    16.929 r  dynamic_led2/seg_OBUF[6]_inst_i_310/O[3]
-                         net (fo=3, routed)           1.240    18.169    dynamic_led2/seg_OBUF[6]_inst_i_310_n_4
-    SLICE_X4Y14          LUT4 (Prop_lut4_I0_O)        0.257    18.426 r  dynamic_led2/seg_OBUF[6]_inst_i_334/O
-                         net (fo=1, routed)           0.384    18.810    dynamic_led2/seg_OBUF[6]_inst_i_334_n_0
-    SLICE_X2Y14          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.457    19.267 r  dynamic_led2/seg_OBUF[6]_inst_i_178/CO[3]
-                         net (fo=1, routed)           0.000    19.267    dynamic_led2/seg_OBUF[6]_inst_i_178_n_0
-    SLICE_X2Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100    19.367 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
-                         net (fo=1, routed)           0.000    19.367    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
-    SLICE_X2Y16          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.131    19.498 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
-                         net (fo=5, routed)           0.810    20.308    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
-    SLICE_X5Y18          LUT4 (Prop_lut4_I0_O)        0.287    20.595 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
-                         net (fo=3, routed)           0.684    21.279    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
-    SLICE_X5Y19          LUT6 (Prop_lut6_I4_O)        0.267    21.546 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
-                         net (fo=5, routed)           0.973    22.519    dynamic_led2/C[1]
-    SLICE_X9Y21          LUT6 (Prop_lut6_I0_O)        0.105    22.624 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
-                         net (fo=2, routed)           0.751    23.374    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
-    SLICE_X7Y21          LUT6 (Prop_lut6_I4_O)        0.105    23.479 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
-                         net (fo=1, routed)           0.784    24.264    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
-    SLICE_X5Y24          LUT6 (Prop_lut6_I5_O)        0.105    24.369 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
-                         net (fo=1, routed)           0.820    25.189    dynamic_led2/disp_right4[2]
-    SLICE_X2Y26          LUT5 (Prop_lut5_I1_O)        0.115    25.304 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
-                         net (fo=1, routed)           0.655    25.959    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
-    SLICE_X2Y27          LUT6 (Prop_lut6_I1_O)        0.264    26.223 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
-                         net (fo=7, routed)           0.643    26.867    dynamic_led2/sel0[2]
-    SLICE_X0Y28          LUT4 (Prop_lut4_I1_O)        0.124    26.991 r  dynamic_led2/seg_OBUF[2]_inst_i_1/O
-                         net (fo=1, routed)           1.771    28.761    seg_OBUF[2]
-    L14                  OBUF (Prop_obuf_I_O)         3.445    32.207 r  seg_OBUF[2]_inst/O
-                         net (fo=0)                   0.000    32.207    seg[2]
+    SLICE_X3Y7           FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
+    SLICE_X3Y7           FDRE (Prop_fdre_C_Q)         0.379     0.379 f  delay_counter_reg[0]/Q
+                         net (fo=68, routed)          1.917     2.296    dynamic_led2/delay_counter_reg[0]
+    SLICE_X14Y1          LUT1 (Prop_lut1_I0_O)        0.105     2.401 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
+                         net (fo=2, routed)           0.442     2.844    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
+    SLICE_X13Y2          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     3.324 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
+                         net (fo=1, routed)           0.000     3.324    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
+    SLICE_X13Y3          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.422 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
+                         net (fo=1, routed)           0.000     3.422    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
+    SLICE_X13Y4          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.520 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
+                         net (fo=1, routed)           0.000     3.520    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
+    SLICE_X13Y5          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.618 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
+                         net (fo=1, routed)           0.000     3.618    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
+    SLICE_X13Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.716 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
+                         net (fo=1, routed)           0.000     3.716    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
+    SLICE_X13Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.814 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
+                         net (fo=1, routed)           0.000     3.814    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
+    SLICE_X13Y8          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180     3.994 r  dynamic_led2/seg_OBUF[6]_inst_i_137/O[0]
+                         net (fo=20, routed)          1.476     5.470    dynamic_led2/tim_disp07[25]
+    SLICE_X30Y13         LUT3 (Prop_lut3_I0_O)        0.249     5.719 r  dynamic_led2/seg_OBUF[6]_inst_i_341/O
+                         net (fo=50, routed)          3.235     8.954    dynamic_led2/seg_OBUF[6]_inst_i_341_n_0
+    SLICE_X9Y6           LUT6 (Prop_lut6_I3_O)        0.105     9.059 r  dynamic_led2/seg_OBUF[6]_inst_i_799/O
+                         net (fo=1, routed)           0.000     9.059    dynamic_led2/seg_OBUF[6]_inst_i_799_n_0
+    SLICE_X9Y6           CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457     9.516 r  dynamic_led2/seg_OBUF[6]_inst_i_610/CO[3]
+                         net (fo=1, routed)           0.000     9.516    dynamic_led2/seg_OBUF[6]_inst_i_610_n_0
+    SLICE_X9Y7           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.614 r  dynamic_led2/seg_OBUF[6]_inst_i_613/CO[3]
+                         net (fo=1, routed)           0.000     9.614    dynamic_led2/seg_OBUF[6]_inst_i_613_n_0
+    SLICE_X9Y8           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.712 r  dynamic_led2/seg_OBUF[6]_inst_i_946/CO[3]
+                         net (fo=1, routed)           0.000     9.712    dynamic_led2/seg_OBUF[6]_inst_i_946_n_0
+    SLICE_X9Y9           CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.132     9.844 f  dynamic_led2/seg_OBUF[6]_inst_i_719/CO[1]
+                         net (fo=24, routed)          0.711    10.555    dynamic_led2/seg_OBUF[6]_inst_i_719_n_2
+    SLICE_X11Y9          LUT3 (Prop_lut3_I0_O)        0.294    10.849 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
+                         net (fo=2, routed)           0.695    11.544    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
+    SLICE_X11Y9          LUT4 (Prop_lut4_I3_O)        0.267    11.811 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
+                         net (fo=1, routed)           0.000    11.811    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
+    SLICE_X11Y9          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    12.268 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
+                         net (fo=1, routed)           0.000    12.268    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
+    SLICE_X11Y10         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.265    12.533 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[1]
+                         net (fo=2, routed)           0.787    13.320    dynamic_led2/seg_OBUF[6]_inst_i_548_n_6
+    SLICE_X8Y10          LUT3 (Prop_lut3_I0_O)        0.261    13.581 r  dynamic_led2/seg_OBUF[6]_inst_i_540/O
+                         net (fo=2, routed)           0.697    14.278    dynamic_led2/seg_OBUF[6]_inst_i_540_n_0
+    SLICE_X8Y10          LUT4 (Prop_lut4_I3_O)        0.283    14.561 r  dynamic_led2/seg_OBUF[6]_inst_i_544/O
+                         net (fo=1, routed)           0.000    14.561    dynamic_led2/seg_OBUF[6]_inst_i_544_n_0
+    SLICE_X8Y10          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    14.877 r  dynamic_led2/seg_OBUF[6]_inst_i_319/CO[3]
+                         net (fo=1, routed)           0.000    14.877    dynamic_led2/seg_OBUF[6]_inst_i_319_n_0
+    SLICE_X8Y11          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.257    15.134 r  dynamic_led2/seg_OBUF[6]_inst_i_169/O[1]
+                         net (fo=3, routed)           1.012    16.146    dynamic_led2/seg_OBUF[6]_inst_i_169_n_6
+    SLICE_X6Y12          LUT2 (Prop_lut2_I1_O)        0.245    16.391 r  dynamic_led2/seg_OBUF[6]_inst_i_312/O
+                         net (fo=1, routed)           0.000    16.391    dynamic_led2/seg_OBUF[6]_inst_i_312_n_0
+    SLICE_X6Y12          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    16.707 r  dynamic_led2/seg_OBUF[6]_inst_i_163/CO[3]
+                         net (fo=1, routed)           0.000    16.707    dynamic_led2/seg_OBUF[6]_inst_i_163_n_0
+    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.199    16.906 r  dynamic_led2/seg_OBUF[6]_inst_i_109/O[2]
+                         net (fo=3, routed)           0.785    17.691    dynamic_led2/seg_OBUF[6]_inst_i_109_n_5
+    SLICE_X4Y11          LUT4 (Prop_lut4_I0_O)        0.244    17.935 r  dynamic_led2/seg_OBUF[6]_inst_i_179/O
+                         net (fo=1, routed)           0.444    18.379    dynamic_led2/seg_OBUF[6]_inst_i_179_n_0
+    SLICE_X2Y11          CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.327    18.706 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
+                         net (fo=1, routed)           0.000    18.706    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
+    SLICE_X2Y12          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.131    18.837 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
+                         net (fo=5, routed)           0.841    19.678    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
+    SLICE_X7Y15          LUT4 (Prop_lut4_I0_O)        0.291    19.969 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
+                         net (fo=3, routed)           0.684    20.652    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
+    SLICE_X8Y14          LUT6 (Prop_lut6_I4_O)        0.267    20.919 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
+                         net (fo=5, routed)           1.421    22.340    dynamic_led2/C[1]
+    SLICE_X28Y15         LUT6 (Prop_lut6_I0_O)        0.105    22.445 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
+                         net (fo=2, routed)           0.921    23.366    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
+    SLICE_X13Y16         LUT6 (Prop_lut6_I4_O)        0.105    23.471 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
+                         net (fo=1, routed)           0.648    24.119    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
+    SLICE_X12Y17         LUT6 (Prop_lut6_I5_O)        0.105    24.224 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
+                         net (fo=1, routed)           0.518    24.742    dynamic_led2/disp_right4[2]
+    SLICE_X8Y21          LUT5 (Prop_lut5_I1_O)        0.105    24.847 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
+                         net (fo=1, routed)           0.666    25.513    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
+    SLICE_X8Y22          LUT6 (Prop_lut6_I1_O)        0.264    25.777 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
+                         net (fo=7, routed)           0.747    26.524    dynamic_led2/sel0[2]
+    SLICE_X0Y23          LUT4 (Prop_lut4_I1_O)        0.124    26.648 r  dynamic_led2/seg_OBUF[2]_inst_i_1/O
+                         net (fo=1, routed)           1.902    28.551    seg_OBUF[2]
+    L14                  OBUF (Prop_obuf_I_O)         3.445    31.996 r  seg_OBUF[2]_inst/O
+                         net (fo=0)                   0.000    31.996    seg[2]
     L14                                                               r  seg[2] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 delay_counter_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            seg[6]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        32.099ns  (logic 11.344ns (35.341%)  route 20.755ns (64.659%))
-  Logic Levels:           36  (CARRY4=17 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X8Y16          FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
-    SLICE_X8Y16          FDRE (Prop_fdre_C_Q)         0.433     0.433 f  delay_counter_reg[0]/Q
-                         net (fo=68, routed)          1.205     1.638    dynamic_led2/delay_counter_reg[0]
-    SLICE_X11Y1          LUT1 (Prop_lut1_I0_O)        0.110     1.748 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
-                         net (fo=2, routed)           0.795     2.543    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
-    SLICE_X6Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.657     3.200 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
-                         net (fo=1, routed)           0.000     3.200    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
-    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.300 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
-                         net (fo=1, routed)           0.000     3.300    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
-    SLICE_X6Y14          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.400 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
-                         net (fo=1, routed)           0.000     3.400    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
-    SLICE_X6Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.500 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
-                         net (fo=1, routed)           0.000     3.500    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
-    SLICE_X6Y16          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.600 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
-                         net (fo=1, routed)           0.000     3.600    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
-    SLICE_X6Y17          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.700 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
-                         net (fo=1, routed)           0.000     3.700    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
-    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.800 r  dynamic_led2/seg_OBUF[6]_inst_i_137/CO[3]
-                         net (fo=1, routed)           0.000     3.800    dynamic_led2/seg_OBUF[6]_inst_i_137_n_0
-    SLICE_X6Y19          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.257     4.057 r  dynamic_led2/seg_OBUF[6]_inst_i_97/O[1]
-                         net (fo=51, routed)          2.272     6.329    dynamic_led2/tim_disp07[30]
-    SLICE_X13Y24         LUT3 (Prop_lut3_I0_O)        0.245     6.574 r  dynamic_led2/seg_OBUF[6]_inst_i_511/O
-                         net (fo=18, routed)          2.105     8.678    dynamic_led2/seg_OBUF[6]_inst_i_511_n_0
-    SLICE_X3Y8           LUT6 (Prop_lut6_I0_O)        0.105     8.783 r  dynamic_led2/seg_OBUF[6]_inst_i_804/O
-                         net (fo=1, routed)           0.000     8.783    dynamic_led2/seg_OBUF[6]_inst_i_804_n_0
-    SLICE_X3Y8           CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.440     9.223 r  dynamic_led2/seg_OBUF[6]_inst_i_611/CO[3]
-                         net (fo=1, routed)           0.000     9.223    dynamic_led2/seg_OBUF[6]_inst_i_611_n_0
-    SLICE_X3Y9           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.098     9.321 f  dynamic_led2/seg_OBUF[6]_inst_i_614/CO[3]
-                         net (fo=36, routed)          1.307    10.628    dynamic_led2/seg_OBUF[6]_inst_i_614_n_0
-    SLICE_X5Y11          LUT3 (Prop_lut3_I2_O)        0.119    10.747 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
-                         net (fo=2, routed)           0.854    11.601    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
-    SLICE_X5Y11          LUT4 (Prop_lut4_I3_O)        0.267    11.868 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
-                         net (fo=1, routed)           0.000    11.868    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
-    SLICE_X5Y11          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.457    12.325 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
-                         net (fo=1, routed)           0.000    12.325    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
-    SLICE_X5Y12          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.181    12.506 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[0]
-                         net (fo=2, routed)           0.769    13.276    dynamic_led2/seg_OBUF[6]_inst_i_548_n_7
-    SLICE_X7Y12          LUT3 (Prop_lut3_I0_O)        0.263    13.539 r  dynamic_led2/seg_OBUF[6]_inst_i_541/O
-                         net (fo=2, routed)           0.857    14.396    dynamic_led2/seg_OBUF[6]_inst_i_541_n_0
-    SLICE_X7Y12          LUT4 (Prop_lut4_I3_O)        0.267    14.663 r  dynamic_led2/seg_OBUF[6]_inst_i_545/O
-                         net (fo=1, routed)           0.000    14.663    dynamic_led2/seg_OBUF[6]_inst_i_545_n_0
-    SLICE_X7Y12          CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.481    15.144 r  dynamic_led2/seg_OBUF[6]_inst_i_319/O[2]
-                         net (fo=3, routed)           1.002    16.146    dynamic_led2/seg_OBUF[6]_inst_i_319_n_5
-    SLICE_X3Y18          LUT2 (Prop_lut2_I0_O)        0.253    16.399 r  dynamic_led2/seg_OBUF[6]_inst_i_524/O
-                         net (fo=1, routed)           0.000    16.399    dynamic_led2/seg_OBUF[6]_inst_i_524_n_0
-    SLICE_X3Y18          CARRY4 (Prop_carry4_S[1]_O[3])
-                                                      0.530    16.929 r  dynamic_led2/seg_OBUF[6]_inst_i_310/O[3]
-                         net (fo=3, routed)           1.240    18.169    dynamic_led2/seg_OBUF[6]_inst_i_310_n_4
-    SLICE_X4Y14          LUT4 (Prop_lut4_I0_O)        0.257    18.426 r  dynamic_led2/seg_OBUF[6]_inst_i_334/O
-                         net (fo=1, routed)           0.384    18.810    dynamic_led2/seg_OBUF[6]_inst_i_334_n_0
-    SLICE_X2Y14          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.457    19.267 r  dynamic_led2/seg_OBUF[6]_inst_i_178/CO[3]
-                         net (fo=1, routed)           0.000    19.267    dynamic_led2/seg_OBUF[6]_inst_i_178_n_0
-    SLICE_X2Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100    19.367 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
-                         net (fo=1, routed)           0.000    19.367    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
-    SLICE_X2Y16          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.131    19.498 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
-                         net (fo=5, routed)           0.810    20.308    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
-    SLICE_X5Y18          LUT4 (Prop_lut4_I0_O)        0.287    20.595 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
-                         net (fo=3, routed)           0.684    21.279    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
-    SLICE_X5Y19          LUT6 (Prop_lut6_I4_O)        0.267    21.546 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
-                         net (fo=5, routed)           0.973    22.519    dynamic_led2/C[1]
-    SLICE_X9Y21          LUT6 (Prop_lut6_I0_O)        0.105    22.624 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
-                         net (fo=2, routed)           0.751    23.374    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
-    SLICE_X7Y21          LUT6 (Prop_lut6_I4_O)        0.105    23.479 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
-                         net (fo=1, routed)           0.784    24.264    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
-    SLICE_X5Y24          LUT6 (Prop_lut6_I5_O)        0.105    24.369 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
-                         net (fo=1, routed)           0.820    25.189    dynamic_led2/disp_right4[2]
-    SLICE_X2Y26          LUT5 (Prop_lut5_I1_O)        0.115    25.304 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
-                         net (fo=1, routed)           0.655    25.959    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
-    SLICE_X2Y27          LUT6 (Prop_lut6_I1_O)        0.264    26.223 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
-                         net (fo=7, routed)           0.785    27.008    dynamic_led2/sel0[2]
-    SLICE_X0Y28          LUT4 (Prop_lut4_I2_O)        0.105    27.113 r  dynamic_led2/seg_OBUF[6]_inst_i_1/O
-                         net (fo=1, routed)           1.703    28.816    seg_OBUF[6]
-    M14                  OBUF (Prop_obuf_I_O)         3.283    32.099 r  seg_OBUF[6]_inst/O
-                         net (fo=0)                   0.000    32.099    seg[6]
-    M14                                                               r  seg[6] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 delay_counter_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            seg[0]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        31.887ns  (logic 11.573ns (36.295%)  route 20.314ns (63.705%))
-  Logic Levels:           36  (CARRY4=17 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X8Y16          FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
-    SLICE_X8Y16          FDRE (Prop_fdre_C_Q)         0.433     0.433 f  delay_counter_reg[0]/Q
-                         net (fo=68, routed)          1.205     1.638    dynamic_led2/delay_counter_reg[0]
-    SLICE_X11Y1          LUT1 (Prop_lut1_I0_O)        0.110     1.748 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
-                         net (fo=2, routed)           0.795     2.543    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
-    SLICE_X6Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.657     3.200 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
-                         net (fo=1, routed)           0.000     3.200    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
-    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.300 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
-                         net (fo=1, routed)           0.000     3.300    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
-    SLICE_X6Y14          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.400 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
-                         net (fo=1, routed)           0.000     3.400    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
-    SLICE_X6Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.500 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
-                         net (fo=1, routed)           0.000     3.500    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
-    SLICE_X6Y16          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.600 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
-                         net (fo=1, routed)           0.000     3.600    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
-    SLICE_X6Y17          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.700 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
-                         net (fo=1, routed)           0.000     3.700    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
-    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.800 r  dynamic_led2/seg_OBUF[6]_inst_i_137/CO[3]
-                         net (fo=1, routed)           0.000     3.800    dynamic_led2/seg_OBUF[6]_inst_i_137_n_0
-    SLICE_X6Y19          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.257     4.057 r  dynamic_led2/seg_OBUF[6]_inst_i_97/O[1]
-                         net (fo=51, routed)          2.272     6.329    dynamic_led2/tim_disp07[30]
-    SLICE_X13Y24         LUT3 (Prop_lut3_I0_O)        0.245     6.574 r  dynamic_led2/seg_OBUF[6]_inst_i_511/O
-                         net (fo=18, routed)          2.105     8.678    dynamic_led2/seg_OBUF[6]_inst_i_511_n_0
-    SLICE_X3Y8           LUT6 (Prop_lut6_I0_O)        0.105     8.783 r  dynamic_led2/seg_OBUF[6]_inst_i_804/O
-                         net (fo=1, routed)           0.000     8.783    dynamic_led2/seg_OBUF[6]_inst_i_804_n_0
-    SLICE_X3Y8           CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.440     9.223 r  dynamic_led2/seg_OBUF[6]_inst_i_611/CO[3]
-                         net (fo=1, routed)           0.000     9.223    dynamic_led2/seg_OBUF[6]_inst_i_611_n_0
-    SLICE_X3Y9           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.098     9.321 f  dynamic_led2/seg_OBUF[6]_inst_i_614/CO[3]
-                         net (fo=36, routed)          1.307    10.628    dynamic_led2/seg_OBUF[6]_inst_i_614_n_0
-    SLICE_X5Y11          LUT3 (Prop_lut3_I2_O)        0.119    10.747 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
-                         net (fo=2, routed)           0.854    11.601    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
-    SLICE_X5Y11          LUT4 (Prop_lut4_I3_O)        0.267    11.868 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
-                         net (fo=1, routed)           0.000    11.868    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
-    SLICE_X5Y11          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.457    12.325 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
-                         net (fo=1, routed)           0.000    12.325    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
-    SLICE_X5Y12          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.181    12.506 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[0]
-                         net (fo=2, routed)           0.769    13.276    dynamic_led2/seg_OBUF[6]_inst_i_548_n_7
-    SLICE_X7Y12          LUT3 (Prop_lut3_I0_O)        0.263    13.539 r  dynamic_led2/seg_OBUF[6]_inst_i_541/O
-                         net (fo=2, routed)           0.857    14.396    dynamic_led2/seg_OBUF[6]_inst_i_541_n_0
-    SLICE_X7Y12          LUT4 (Prop_lut4_I3_O)        0.267    14.663 r  dynamic_led2/seg_OBUF[6]_inst_i_545/O
-                         net (fo=1, routed)           0.000    14.663    dynamic_led2/seg_OBUF[6]_inst_i_545_n_0
-    SLICE_X7Y12          CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.481    15.144 r  dynamic_led2/seg_OBUF[6]_inst_i_319/O[2]
-                         net (fo=3, routed)           1.002    16.146    dynamic_led2/seg_OBUF[6]_inst_i_319_n_5
-    SLICE_X3Y18          LUT2 (Prop_lut2_I0_O)        0.253    16.399 r  dynamic_led2/seg_OBUF[6]_inst_i_524/O
-                         net (fo=1, routed)           0.000    16.399    dynamic_led2/seg_OBUF[6]_inst_i_524_n_0
-    SLICE_X3Y18          CARRY4 (Prop_carry4_S[1]_O[3])
-                                                      0.530    16.929 r  dynamic_led2/seg_OBUF[6]_inst_i_310/O[3]
-                         net (fo=3, routed)           1.240    18.169    dynamic_led2/seg_OBUF[6]_inst_i_310_n_4
-    SLICE_X4Y14          LUT4 (Prop_lut4_I0_O)        0.257    18.426 r  dynamic_led2/seg_OBUF[6]_inst_i_334/O
-                         net (fo=1, routed)           0.384    18.810    dynamic_led2/seg_OBUF[6]_inst_i_334_n_0
-    SLICE_X2Y14          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.457    19.267 r  dynamic_led2/seg_OBUF[6]_inst_i_178/CO[3]
-                         net (fo=1, routed)           0.000    19.267    dynamic_led2/seg_OBUF[6]_inst_i_178_n_0
-    SLICE_X2Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100    19.367 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
-                         net (fo=1, routed)           0.000    19.367    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
-    SLICE_X2Y16          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.131    19.498 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
-                         net (fo=5, routed)           0.810    20.308    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
-    SLICE_X5Y18          LUT4 (Prop_lut4_I0_O)        0.287    20.595 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
-                         net (fo=3, routed)           0.684    21.279    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
-    SLICE_X5Y19          LUT6 (Prop_lut6_I4_O)        0.267    21.546 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
-                         net (fo=5, routed)           0.973    22.519    dynamic_led2/C[1]
-    SLICE_X9Y21          LUT6 (Prop_lut6_I0_O)        0.105    22.624 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
-                         net (fo=2, routed)           0.751    23.374    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
-    SLICE_X7Y21          LUT6 (Prop_lut6_I4_O)        0.105    23.479 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
-                         net (fo=1, routed)           0.784    24.264    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
-    SLICE_X5Y24          LUT6 (Prop_lut6_I5_O)        0.105    24.369 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
-                         net (fo=1, routed)           0.820    25.189    dynamic_led2/disp_right4[2]
-    SLICE_X2Y26          LUT5 (Prop_lut5_I1_O)        0.115    25.304 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
-                         net (fo=1, routed)           0.655    25.959    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
-    SLICE_X2Y27          LUT6 (Prop_lut6_I1_O)        0.264    26.223 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
-                         net (fo=7, routed)           0.472    26.695    dynamic_led2/sel0[2]
-    SLICE_X0Y27          LUT4 (Prop_lut4_I3_O)        0.126    26.821 r  dynamic_led2/seg_OBUF[0]_inst_i_1/O
-                         net (fo=1, routed)           1.575    28.396    seg_OBUF[0]
-    P11                  OBUF (Prop_obuf_I_O)         3.491    31.887 r  seg_OBUF[0]_inst/O
-                         net (fo=0)                   0.000    31.887    seg[0]
-    P11                                                               r  seg[0] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 delay_counter_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            seg[1]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        31.869ns  (logic 11.379ns (35.705%)  route 20.490ns (64.295%))
-  Logic Levels:           36  (CARRY4=17 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X8Y16          FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
-    SLICE_X8Y16          FDRE (Prop_fdre_C_Q)         0.433     0.433 f  delay_counter_reg[0]/Q
-                         net (fo=68, routed)          1.205     1.638    dynamic_led2/delay_counter_reg[0]
-    SLICE_X11Y1          LUT1 (Prop_lut1_I0_O)        0.110     1.748 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
-                         net (fo=2, routed)           0.795     2.543    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
-    SLICE_X6Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.657     3.200 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
-                         net (fo=1, routed)           0.000     3.200    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
-    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.300 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
-                         net (fo=1, routed)           0.000     3.300    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
-    SLICE_X6Y14          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.400 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
-                         net (fo=1, routed)           0.000     3.400    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
-    SLICE_X6Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.500 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
-                         net (fo=1, routed)           0.000     3.500    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
-    SLICE_X6Y16          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.600 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
-                         net (fo=1, routed)           0.000     3.600    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
-    SLICE_X6Y17          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.700 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
-                         net (fo=1, routed)           0.000     3.700    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
-    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.800 r  dynamic_led2/seg_OBUF[6]_inst_i_137/CO[3]
-                         net (fo=1, routed)           0.000     3.800    dynamic_led2/seg_OBUF[6]_inst_i_137_n_0
-    SLICE_X6Y19          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.257     4.057 r  dynamic_led2/seg_OBUF[6]_inst_i_97/O[1]
-                         net (fo=51, routed)          2.272     6.329    dynamic_led2/tim_disp07[30]
-    SLICE_X13Y24         LUT3 (Prop_lut3_I0_O)        0.245     6.574 r  dynamic_led2/seg_OBUF[6]_inst_i_511/O
-                         net (fo=18, routed)          2.105     8.678    dynamic_led2/seg_OBUF[6]_inst_i_511_n_0
-    SLICE_X3Y8           LUT6 (Prop_lut6_I0_O)        0.105     8.783 r  dynamic_led2/seg_OBUF[6]_inst_i_804/O
-                         net (fo=1, routed)           0.000     8.783    dynamic_led2/seg_OBUF[6]_inst_i_804_n_0
-    SLICE_X3Y8           CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.440     9.223 r  dynamic_led2/seg_OBUF[6]_inst_i_611/CO[3]
-                         net (fo=1, routed)           0.000     9.223    dynamic_led2/seg_OBUF[6]_inst_i_611_n_0
-    SLICE_X3Y9           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.098     9.321 f  dynamic_led2/seg_OBUF[6]_inst_i_614/CO[3]
-                         net (fo=36, routed)          1.307    10.628    dynamic_led2/seg_OBUF[6]_inst_i_614_n_0
-    SLICE_X5Y11          LUT3 (Prop_lut3_I2_O)        0.119    10.747 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
-                         net (fo=2, routed)           0.854    11.601    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
-    SLICE_X5Y11          LUT4 (Prop_lut4_I3_O)        0.267    11.868 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
-                         net (fo=1, routed)           0.000    11.868    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
-    SLICE_X5Y11          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.457    12.325 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
-                         net (fo=1, routed)           0.000    12.325    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
-    SLICE_X5Y12          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.181    12.506 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[0]
-                         net (fo=2, routed)           0.769    13.276    dynamic_led2/seg_OBUF[6]_inst_i_548_n_7
-    SLICE_X7Y12          LUT3 (Prop_lut3_I0_O)        0.263    13.539 r  dynamic_led2/seg_OBUF[6]_inst_i_541/O
-                         net (fo=2, routed)           0.857    14.396    dynamic_led2/seg_OBUF[6]_inst_i_541_n_0
-    SLICE_X7Y12          LUT4 (Prop_lut4_I3_O)        0.267    14.663 r  dynamic_led2/seg_OBUF[6]_inst_i_545/O
-                         net (fo=1, routed)           0.000    14.663    dynamic_led2/seg_OBUF[6]_inst_i_545_n_0
-    SLICE_X7Y12          CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.481    15.144 r  dynamic_led2/seg_OBUF[6]_inst_i_319/O[2]
-                         net (fo=3, routed)           1.002    16.146    dynamic_led2/seg_OBUF[6]_inst_i_319_n_5
-    SLICE_X3Y18          LUT2 (Prop_lut2_I0_O)        0.253    16.399 r  dynamic_led2/seg_OBUF[6]_inst_i_524/O
-                         net (fo=1, routed)           0.000    16.399    dynamic_led2/seg_OBUF[6]_inst_i_524_n_0
-    SLICE_X3Y18          CARRY4 (Prop_carry4_S[1]_O[3])
-                                                      0.530    16.929 r  dynamic_led2/seg_OBUF[6]_inst_i_310/O[3]
-                         net (fo=3, routed)           1.240    18.169    dynamic_led2/seg_OBUF[6]_inst_i_310_n_4
-    SLICE_X4Y14          LUT4 (Prop_lut4_I0_O)        0.257    18.426 r  dynamic_led2/seg_OBUF[6]_inst_i_334/O
-                         net (fo=1, routed)           0.384    18.810    dynamic_led2/seg_OBUF[6]_inst_i_334_n_0
-    SLICE_X2Y14          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.457    19.267 r  dynamic_led2/seg_OBUF[6]_inst_i_178/CO[3]
-                         net (fo=1, routed)           0.000    19.267    dynamic_led2/seg_OBUF[6]_inst_i_178_n_0
-    SLICE_X2Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100    19.367 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
-                         net (fo=1, routed)           0.000    19.367    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
-    SLICE_X2Y16          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.131    19.498 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
-                         net (fo=5, routed)           0.810    20.308    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
-    SLICE_X5Y18          LUT4 (Prop_lut4_I0_O)        0.287    20.595 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
-                         net (fo=3, routed)           0.684    21.279    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
-    SLICE_X5Y19          LUT6 (Prop_lut6_I4_O)        0.267    21.546 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
-                         net (fo=5, routed)           0.973    22.519    dynamic_led2/C[1]
-    SLICE_X9Y21          LUT6 (Prop_lut6_I0_O)        0.105    22.624 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
-                         net (fo=2, routed)           0.751    23.374    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
-    SLICE_X7Y21          LUT6 (Prop_lut6_I4_O)        0.105    23.479 f  dynamic_led2/seg_OBUF[6]_inst_i_80/O
-                         net (fo=1, routed)           0.784    24.264    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
-    SLICE_X5Y24          LUT6 (Prop_lut6_I5_O)        0.105    24.369 f  dynamic_led2/seg_OBUF[6]_inst_i_45/O
-                         net (fo=1, routed)           0.820    25.189    dynamic_led2/disp_right4[2]
-    SLICE_X2Y26          LUT5 (Prop_lut5_I1_O)        0.115    25.304 f  dynamic_led2/seg_OBUF[6]_inst_i_17/O
-                         net (fo=1, routed)           0.655    25.959    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
-    SLICE_X2Y27          LUT6 (Prop_lut6_I1_O)        0.264    26.223 f  dynamic_led2/seg_OBUF[6]_inst_i_4/O
-                         net (fo=7, routed)           0.643    26.867    dynamic_led2/sel0[2]
-    SLICE_X0Y28          LUT4 (Prop_lut4_I1_O)        0.105    26.972 r  dynamic_led2/seg_OBUF[1]_inst_i_1/O
-                         net (fo=1, routed)           1.580    28.551    seg_OBUF[1]
-    N12                  OBUF (Prop_obuf_I_O)         3.318    31.869 r  seg_OBUF[1]_inst/O
-                         net (fo=0)                   0.000    31.869    seg[1]
-    N12                                                               r  seg[1] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 delay_counter_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            seg[3]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        31.808ns  (logic 11.320ns (35.587%)  route 20.489ns (64.413%))
-  Logic Levels:           36  (CARRY4=17 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X8Y16          FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
-    SLICE_X8Y16          FDRE (Prop_fdre_C_Q)         0.433     0.433 f  delay_counter_reg[0]/Q
-                         net (fo=68, routed)          1.205     1.638    dynamic_led2/delay_counter_reg[0]
-    SLICE_X11Y1          LUT1 (Prop_lut1_I0_O)        0.110     1.748 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
-                         net (fo=2, routed)           0.795     2.543    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
-    SLICE_X6Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.657     3.200 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
-                         net (fo=1, routed)           0.000     3.200    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
-    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.300 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
-                         net (fo=1, routed)           0.000     3.300    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
-    SLICE_X6Y14          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.400 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
-                         net (fo=1, routed)           0.000     3.400    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
-    SLICE_X6Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.500 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
-                         net (fo=1, routed)           0.000     3.500    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
-    SLICE_X6Y16          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.600 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
-                         net (fo=1, routed)           0.000     3.600    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
-    SLICE_X6Y17          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.700 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
-                         net (fo=1, routed)           0.000     3.700    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
-    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.800 r  dynamic_led2/seg_OBUF[6]_inst_i_137/CO[3]
-                         net (fo=1, routed)           0.000     3.800    dynamic_led2/seg_OBUF[6]_inst_i_137_n_0
-    SLICE_X6Y19          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.257     4.057 r  dynamic_led2/seg_OBUF[6]_inst_i_97/O[1]
-                         net (fo=51, routed)          2.272     6.329    dynamic_led2/tim_disp07[30]
-    SLICE_X13Y24         LUT3 (Prop_lut3_I0_O)        0.245     6.574 r  dynamic_led2/seg_OBUF[6]_inst_i_511/O
-                         net (fo=18, routed)          2.105     8.678    dynamic_led2/seg_OBUF[6]_inst_i_511_n_0
-    SLICE_X3Y8           LUT6 (Prop_lut6_I0_O)        0.105     8.783 r  dynamic_led2/seg_OBUF[6]_inst_i_804/O
-                         net (fo=1, routed)           0.000     8.783    dynamic_led2/seg_OBUF[6]_inst_i_804_n_0
-    SLICE_X3Y8           CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.440     9.223 r  dynamic_led2/seg_OBUF[6]_inst_i_611/CO[3]
-                         net (fo=1, routed)           0.000     9.223    dynamic_led2/seg_OBUF[6]_inst_i_611_n_0
-    SLICE_X3Y9           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.098     9.321 f  dynamic_led2/seg_OBUF[6]_inst_i_614/CO[3]
-                         net (fo=36, routed)          1.307    10.628    dynamic_led2/seg_OBUF[6]_inst_i_614_n_0
-    SLICE_X5Y11          LUT3 (Prop_lut3_I2_O)        0.119    10.747 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
-                         net (fo=2, routed)           0.854    11.601    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
-    SLICE_X5Y11          LUT4 (Prop_lut4_I3_O)        0.267    11.868 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
-                         net (fo=1, routed)           0.000    11.868    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
-    SLICE_X5Y11          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.457    12.325 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
-                         net (fo=1, routed)           0.000    12.325    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
-    SLICE_X5Y12          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.181    12.506 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[0]
-                         net (fo=2, routed)           0.769    13.276    dynamic_led2/seg_OBUF[6]_inst_i_548_n_7
-    SLICE_X7Y12          LUT3 (Prop_lut3_I0_O)        0.263    13.539 r  dynamic_led2/seg_OBUF[6]_inst_i_541/O
-                         net (fo=2, routed)           0.857    14.396    dynamic_led2/seg_OBUF[6]_inst_i_541_n_0
-    SLICE_X7Y12          LUT4 (Prop_lut4_I3_O)        0.267    14.663 r  dynamic_led2/seg_OBUF[6]_inst_i_545/O
-                         net (fo=1, routed)           0.000    14.663    dynamic_led2/seg_OBUF[6]_inst_i_545_n_0
-    SLICE_X7Y12          CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.481    15.144 r  dynamic_led2/seg_OBUF[6]_inst_i_319/O[2]
-                         net (fo=3, routed)           1.002    16.146    dynamic_led2/seg_OBUF[6]_inst_i_319_n_5
-    SLICE_X3Y18          LUT2 (Prop_lut2_I0_O)        0.253    16.399 r  dynamic_led2/seg_OBUF[6]_inst_i_524/O
-                         net (fo=1, routed)           0.000    16.399    dynamic_led2/seg_OBUF[6]_inst_i_524_n_0
-    SLICE_X3Y18          CARRY4 (Prop_carry4_S[1]_O[3])
-                                                      0.530    16.929 r  dynamic_led2/seg_OBUF[6]_inst_i_310/O[3]
-                         net (fo=3, routed)           1.240    18.169    dynamic_led2/seg_OBUF[6]_inst_i_310_n_4
-    SLICE_X4Y14          LUT4 (Prop_lut4_I0_O)        0.257    18.426 r  dynamic_led2/seg_OBUF[6]_inst_i_334/O
-                         net (fo=1, routed)           0.384    18.810    dynamic_led2/seg_OBUF[6]_inst_i_334_n_0
-    SLICE_X2Y14          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.457    19.267 r  dynamic_led2/seg_OBUF[6]_inst_i_178/CO[3]
-                         net (fo=1, routed)           0.000    19.267    dynamic_led2/seg_OBUF[6]_inst_i_178_n_0
-    SLICE_X2Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100    19.367 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
-                         net (fo=1, routed)           0.000    19.367    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
-    SLICE_X2Y16          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.131    19.498 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
-                         net (fo=5, routed)           0.810    20.308    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
-    SLICE_X5Y18          LUT4 (Prop_lut4_I0_O)        0.287    20.595 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
-                         net (fo=3, routed)           0.684    21.279    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
-    SLICE_X5Y19          LUT6 (Prop_lut6_I4_O)        0.267    21.546 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
-                         net (fo=5, routed)           0.973    22.519    dynamic_led2/C[1]
-    SLICE_X9Y21          LUT6 (Prop_lut6_I0_O)        0.105    22.624 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
-                         net (fo=2, routed)           0.751    23.374    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
-    SLICE_X7Y21          LUT6 (Prop_lut6_I4_O)        0.105    23.479 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
-                         net (fo=1, routed)           0.784    24.264    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
-    SLICE_X5Y24          LUT6 (Prop_lut6_I5_O)        0.105    24.369 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
-                         net (fo=1, routed)           0.820    25.189    dynamic_led2/disp_right4[2]
-    SLICE_X2Y26          LUT5 (Prop_lut5_I1_O)        0.115    25.304 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
-                         net (fo=1, routed)           0.655    25.959    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
-    SLICE_X2Y27          LUT6 (Prop_lut6_I1_O)        0.264    26.223 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
-                         net (fo=7, routed)           0.640    26.863    dynamic_led2/sel0[2]
-    SLICE_X0Y28          LUT4 (Prop_lut4_I2_O)        0.105    26.968 r  dynamic_led2/seg_OBUF[3]_inst_i_1/O
-                         net (fo=1, routed)           1.581    28.550    seg_OBUF[3]
-    K13                  OBUF (Prop_obuf_I_O)         3.259    31.808 r  seg_OBUF[3]_inst/O
-                         net (fo=0)                   0.000    31.808    seg[3]
-    K13                                                               r  seg[3] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -875,125 +578,487 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        31.378ns  (logic 11.382ns (36.274%)  route 19.996ns (63.726%))
-  Logic Levels:           36  (CARRY4=17 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
+  Data Path Delay:        31.785ns  (logic 11.303ns (35.561%)  route 20.482ns (64.439%))
+  Logic Levels:           38  (CARRY4=19 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X8Y16          FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
-    SLICE_X8Y16          FDRE (Prop_fdre_C_Q)         0.433     0.433 f  delay_counter_reg[0]/Q
-                         net (fo=68, routed)          1.205     1.638    dynamic_led2/delay_counter_reg[0]
-    SLICE_X11Y1          LUT1 (Prop_lut1_I0_O)        0.110     1.748 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
-                         net (fo=2, routed)           0.795     2.543    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
-    SLICE_X6Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.657     3.200 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
-                         net (fo=1, routed)           0.000     3.200    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
-    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.300 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
-                         net (fo=1, routed)           0.000     3.300    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
-    SLICE_X6Y14          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.400 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
-                         net (fo=1, routed)           0.000     3.400    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
-    SLICE_X6Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.500 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
-                         net (fo=1, routed)           0.000     3.500    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
-    SLICE_X6Y16          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.600 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
-                         net (fo=1, routed)           0.000     3.600    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
-    SLICE_X6Y17          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.700 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
-                         net (fo=1, routed)           0.000     3.700    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
-    SLICE_X6Y18          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100     3.800 r  dynamic_led2/seg_OBUF[6]_inst_i_137/CO[3]
-                         net (fo=1, routed)           0.000     3.800    dynamic_led2/seg_OBUF[6]_inst_i_137_n_0
-    SLICE_X6Y19          CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.257     4.057 r  dynamic_led2/seg_OBUF[6]_inst_i_97/O[1]
-                         net (fo=51, routed)          2.272     6.329    dynamic_led2/tim_disp07[30]
-    SLICE_X13Y24         LUT3 (Prop_lut3_I0_O)        0.245     6.574 r  dynamic_led2/seg_OBUF[6]_inst_i_511/O
-                         net (fo=18, routed)          2.105     8.678    dynamic_led2/seg_OBUF[6]_inst_i_511_n_0
-    SLICE_X3Y8           LUT6 (Prop_lut6_I0_O)        0.105     8.783 r  dynamic_led2/seg_OBUF[6]_inst_i_804/O
-                         net (fo=1, routed)           0.000     8.783    dynamic_led2/seg_OBUF[6]_inst_i_804_n_0
-    SLICE_X3Y8           CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.440     9.223 r  dynamic_led2/seg_OBUF[6]_inst_i_611/CO[3]
-                         net (fo=1, routed)           0.000     9.223    dynamic_led2/seg_OBUF[6]_inst_i_611_n_0
-    SLICE_X3Y9           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.098     9.321 f  dynamic_led2/seg_OBUF[6]_inst_i_614/CO[3]
-                         net (fo=36, routed)          1.307    10.628    dynamic_led2/seg_OBUF[6]_inst_i_614_n_0
-    SLICE_X5Y11          LUT3 (Prop_lut3_I2_O)        0.119    10.747 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
-                         net (fo=2, routed)           0.854    11.601    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
-    SLICE_X5Y11          LUT4 (Prop_lut4_I3_O)        0.267    11.868 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
-                         net (fo=1, routed)           0.000    11.868    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
-    SLICE_X5Y11          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.457    12.325 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
-                         net (fo=1, routed)           0.000    12.325    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
-    SLICE_X5Y12          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.181    12.506 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[0]
-                         net (fo=2, routed)           0.769    13.276    dynamic_led2/seg_OBUF[6]_inst_i_548_n_7
-    SLICE_X7Y12          LUT3 (Prop_lut3_I0_O)        0.263    13.539 r  dynamic_led2/seg_OBUF[6]_inst_i_541/O
-                         net (fo=2, routed)           0.857    14.396    dynamic_led2/seg_OBUF[6]_inst_i_541_n_0
-    SLICE_X7Y12          LUT4 (Prop_lut4_I3_O)        0.267    14.663 r  dynamic_led2/seg_OBUF[6]_inst_i_545/O
-                         net (fo=1, routed)           0.000    14.663    dynamic_led2/seg_OBUF[6]_inst_i_545_n_0
-    SLICE_X7Y12          CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.481    15.144 r  dynamic_led2/seg_OBUF[6]_inst_i_319/O[2]
-                         net (fo=3, routed)           1.002    16.146    dynamic_led2/seg_OBUF[6]_inst_i_319_n_5
-    SLICE_X3Y18          LUT2 (Prop_lut2_I0_O)        0.253    16.399 r  dynamic_led2/seg_OBUF[6]_inst_i_524/O
-                         net (fo=1, routed)           0.000    16.399    dynamic_led2/seg_OBUF[6]_inst_i_524_n_0
-    SLICE_X3Y18          CARRY4 (Prop_carry4_S[1]_O[3])
-                                                      0.530    16.929 r  dynamic_led2/seg_OBUF[6]_inst_i_310/O[3]
-                         net (fo=3, routed)           1.240    18.169    dynamic_led2/seg_OBUF[6]_inst_i_310_n_4
-    SLICE_X4Y14          LUT4 (Prop_lut4_I0_O)        0.257    18.426 r  dynamic_led2/seg_OBUF[6]_inst_i_334/O
-                         net (fo=1, routed)           0.384    18.810    dynamic_led2/seg_OBUF[6]_inst_i_334_n_0
-    SLICE_X2Y14          CARRY4 (Prop_carry4_DI[0]_CO[3])
-                                                      0.457    19.267 r  dynamic_led2/seg_OBUF[6]_inst_i_178/CO[3]
-                         net (fo=1, routed)           0.000    19.267    dynamic_led2/seg_OBUF[6]_inst_i_178_n_0
-    SLICE_X2Y15          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.100    19.367 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
-                         net (fo=1, routed)           0.000    19.367    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
-    SLICE_X2Y16          CARRY4 (Prop_carry4_CI_CO[1])
-                                                      0.131    19.498 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
-                         net (fo=5, routed)           0.810    20.308    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
-    SLICE_X5Y18          LUT4 (Prop_lut4_I0_O)        0.287    20.595 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
-                         net (fo=3, routed)           0.684    21.279    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
-    SLICE_X5Y19          LUT6 (Prop_lut6_I4_O)        0.267    21.546 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
-                         net (fo=5, routed)           0.973    22.519    dynamic_led2/C[1]
-    SLICE_X9Y21          LUT6 (Prop_lut6_I0_O)        0.105    22.624 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
-                         net (fo=2, routed)           0.751    23.374    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
-    SLICE_X7Y21          LUT6 (Prop_lut6_I4_O)        0.105    23.479 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
-                         net (fo=1, routed)           0.784    24.264    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
-    SLICE_X5Y24          LUT6 (Prop_lut6_I5_O)        0.105    24.369 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
-                         net (fo=1, routed)           0.820    25.189    dynamic_led2/disp_right4[2]
-    SLICE_X2Y26          LUT5 (Prop_lut5_I1_O)        0.115    25.304 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
-                         net (fo=1, routed)           0.655    25.959    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
-    SLICE_X2Y27          LUT6 (Prop_lut6_I1_O)        0.264    26.223 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
-                         net (fo=7, routed)           0.472    26.695    dynamic_led2/sel0[2]
-    SLICE_X0Y27          LUT4 (Prop_lut4_I2_O)        0.105    26.800 r  dynamic_led2/seg_OBUF[5]_inst_i_1/O
-                         net (fo=1, routed)           1.256    28.057    seg_OBUF[5]
-    P13                  OBUF (Prop_obuf_I_O)         3.321    31.378 r  seg_OBUF[5]_inst/O
-                         net (fo=0)                   0.000    31.378    seg[5]
+    SLICE_X3Y7           FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
+    SLICE_X3Y7           FDRE (Prop_fdre_C_Q)         0.379     0.379 f  delay_counter_reg[0]/Q
+                         net (fo=68, routed)          1.917     2.296    dynamic_led2/delay_counter_reg[0]
+    SLICE_X14Y1          LUT1 (Prop_lut1_I0_O)        0.105     2.401 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
+                         net (fo=2, routed)           0.442     2.844    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
+    SLICE_X13Y2          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     3.324 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
+                         net (fo=1, routed)           0.000     3.324    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
+    SLICE_X13Y3          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.422 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
+                         net (fo=1, routed)           0.000     3.422    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
+    SLICE_X13Y4          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.520 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
+                         net (fo=1, routed)           0.000     3.520    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
+    SLICE_X13Y5          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.618 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
+                         net (fo=1, routed)           0.000     3.618    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
+    SLICE_X13Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.716 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
+                         net (fo=1, routed)           0.000     3.716    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
+    SLICE_X13Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.814 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
+                         net (fo=1, routed)           0.000     3.814    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
+    SLICE_X13Y8          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180     3.994 r  dynamic_led2/seg_OBUF[6]_inst_i_137/O[0]
+                         net (fo=20, routed)          1.476     5.470    dynamic_led2/tim_disp07[25]
+    SLICE_X30Y13         LUT3 (Prop_lut3_I0_O)        0.249     5.719 r  dynamic_led2/seg_OBUF[6]_inst_i_341/O
+                         net (fo=50, routed)          3.235     8.954    dynamic_led2/seg_OBUF[6]_inst_i_341_n_0
+    SLICE_X9Y6           LUT6 (Prop_lut6_I3_O)        0.105     9.059 r  dynamic_led2/seg_OBUF[6]_inst_i_799/O
+                         net (fo=1, routed)           0.000     9.059    dynamic_led2/seg_OBUF[6]_inst_i_799_n_0
+    SLICE_X9Y6           CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457     9.516 r  dynamic_led2/seg_OBUF[6]_inst_i_610/CO[3]
+                         net (fo=1, routed)           0.000     9.516    dynamic_led2/seg_OBUF[6]_inst_i_610_n_0
+    SLICE_X9Y7           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.614 r  dynamic_led2/seg_OBUF[6]_inst_i_613/CO[3]
+                         net (fo=1, routed)           0.000     9.614    dynamic_led2/seg_OBUF[6]_inst_i_613_n_0
+    SLICE_X9Y8           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.712 r  dynamic_led2/seg_OBUF[6]_inst_i_946/CO[3]
+                         net (fo=1, routed)           0.000     9.712    dynamic_led2/seg_OBUF[6]_inst_i_946_n_0
+    SLICE_X9Y9           CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.132     9.844 f  dynamic_led2/seg_OBUF[6]_inst_i_719/CO[1]
+                         net (fo=24, routed)          0.711    10.555    dynamic_led2/seg_OBUF[6]_inst_i_719_n_2
+    SLICE_X11Y9          LUT3 (Prop_lut3_I0_O)        0.294    10.849 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
+                         net (fo=2, routed)           0.695    11.544    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
+    SLICE_X11Y9          LUT4 (Prop_lut4_I3_O)        0.267    11.811 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
+                         net (fo=1, routed)           0.000    11.811    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
+    SLICE_X11Y9          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    12.268 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
+                         net (fo=1, routed)           0.000    12.268    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
+    SLICE_X11Y10         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.265    12.533 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[1]
+                         net (fo=2, routed)           0.787    13.320    dynamic_led2/seg_OBUF[6]_inst_i_548_n_6
+    SLICE_X8Y10          LUT3 (Prop_lut3_I0_O)        0.261    13.581 r  dynamic_led2/seg_OBUF[6]_inst_i_540/O
+                         net (fo=2, routed)           0.697    14.278    dynamic_led2/seg_OBUF[6]_inst_i_540_n_0
+    SLICE_X8Y10          LUT4 (Prop_lut4_I3_O)        0.283    14.561 r  dynamic_led2/seg_OBUF[6]_inst_i_544/O
+                         net (fo=1, routed)           0.000    14.561    dynamic_led2/seg_OBUF[6]_inst_i_544_n_0
+    SLICE_X8Y10          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    14.877 r  dynamic_led2/seg_OBUF[6]_inst_i_319/CO[3]
+                         net (fo=1, routed)           0.000    14.877    dynamic_led2/seg_OBUF[6]_inst_i_319_n_0
+    SLICE_X8Y11          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.257    15.134 r  dynamic_led2/seg_OBUF[6]_inst_i_169/O[1]
+                         net (fo=3, routed)           1.012    16.146    dynamic_led2/seg_OBUF[6]_inst_i_169_n_6
+    SLICE_X6Y12          LUT2 (Prop_lut2_I1_O)        0.245    16.391 r  dynamic_led2/seg_OBUF[6]_inst_i_312/O
+                         net (fo=1, routed)           0.000    16.391    dynamic_led2/seg_OBUF[6]_inst_i_312_n_0
+    SLICE_X6Y12          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    16.707 r  dynamic_led2/seg_OBUF[6]_inst_i_163/CO[3]
+                         net (fo=1, routed)           0.000    16.707    dynamic_led2/seg_OBUF[6]_inst_i_163_n_0
+    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.199    16.906 r  dynamic_led2/seg_OBUF[6]_inst_i_109/O[2]
+                         net (fo=3, routed)           0.785    17.691    dynamic_led2/seg_OBUF[6]_inst_i_109_n_5
+    SLICE_X4Y11          LUT4 (Prop_lut4_I0_O)        0.244    17.935 r  dynamic_led2/seg_OBUF[6]_inst_i_179/O
+                         net (fo=1, routed)           0.444    18.379    dynamic_led2/seg_OBUF[6]_inst_i_179_n_0
+    SLICE_X2Y11          CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.327    18.706 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
+                         net (fo=1, routed)           0.000    18.706    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
+    SLICE_X2Y12          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.131    18.837 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
+                         net (fo=5, routed)           0.841    19.678    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
+    SLICE_X7Y15          LUT4 (Prop_lut4_I0_O)        0.291    19.969 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
+                         net (fo=3, routed)           0.684    20.652    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
+    SLICE_X8Y14          LUT6 (Prop_lut6_I4_O)        0.267    20.919 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
+                         net (fo=5, routed)           1.421    22.340    dynamic_led2/C[1]
+    SLICE_X28Y15         LUT6 (Prop_lut6_I0_O)        0.105    22.445 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
+                         net (fo=2, routed)           0.921    23.366    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
+    SLICE_X13Y16         LUT6 (Prop_lut6_I4_O)        0.105    23.471 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
+                         net (fo=1, routed)           0.648    24.119    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
+    SLICE_X12Y17         LUT6 (Prop_lut6_I5_O)        0.105    24.224 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
+                         net (fo=1, routed)           0.518    24.742    dynamic_led2/disp_right4[2]
+    SLICE_X8Y21          LUT5 (Prop_lut5_I1_O)        0.105    24.847 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
+                         net (fo=1, routed)           0.666    25.513    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
+    SLICE_X8Y22          LUT6 (Prop_lut6_I1_O)        0.264    25.777 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
+                         net (fo=7, routed)           1.009    26.786    dynamic_led2/sel0[2]
+    SLICE_X0Y23          LUT4 (Prop_lut4_I2_O)        0.105    26.891 r  dynamic_led2/seg_OBUF[5]_inst_i_1/O
+                         net (fo=1, routed)           1.573    28.464    seg_OBUF[5]
+    P13                  OBUF (Prop_obuf_I_O)         3.321    31.785 r  seg_OBUF[5]_inst/O
+                         net (fo=0)                   0.000    31.785    seg[5]
     P13                                                               r  seg[5] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 page_sel[1]
+  Source:                 delay_counter_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            seg[0]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        31.778ns  (logic 11.487ns (36.149%)  route 20.290ns (63.851%))
+  Logic Levels:           38  (CARRY4=19 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y7           FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
+    SLICE_X3Y7           FDRE (Prop_fdre_C_Q)         0.379     0.379 f  delay_counter_reg[0]/Q
+                         net (fo=68, routed)          1.917     2.296    dynamic_led2/delay_counter_reg[0]
+    SLICE_X14Y1          LUT1 (Prop_lut1_I0_O)        0.105     2.401 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
+                         net (fo=2, routed)           0.442     2.844    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
+    SLICE_X13Y2          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     3.324 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
+                         net (fo=1, routed)           0.000     3.324    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
+    SLICE_X13Y3          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.422 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
+                         net (fo=1, routed)           0.000     3.422    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
+    SLICE_X13Y4          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.520 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
+                         net (fo=1, routed)           0.000     3.520    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
+    SLICE_X13Y5          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.618 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
+                         net (fo=1, routed)           0.000     3.618    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
+    SLICE_X13Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.716 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
+                         net (fo=1, routed)           0.000     3.716    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
+    SLICE_X13Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.814 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
+                         net (fo=1, routed)           0.000     3.814    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
+    SLICE_X13Y8          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180     3.994 r  dynamic_led2/seg_OBUF[6]_inst_i_137/O[0]
+                         net (fo=20, routed)          1.476     5.470    dynamic_led2/tim_disp07[25]
+    SLICE_X30Y13         LUT3 (Prop_lut3_I0_O)        0.249     5.719 r  dynamic_led2/seg_OBUF[6]_inst_i_341/O
+                         net (fo=50, routed)          3.235     8.954    dynamic_led2/seg_OBUF[6]_inst_i_341_n_0
+    SLICE_X9Y6           LUT6 (Prop_lut6_I3_O)        0.105     9.059 r  dynamic_led2/seg_OBUF[6]_inst_i_799/O
+                         net (fo=1, routed)           0.000     9.059    dynamic_led2/seg_OBUF[6]_inst_i_799_n_0
+    SLICE_X9Y6           CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457     9.516 r  dynamic_led2/seg_OBUF[6]_inst_i_610/CO[3]
+                         net (fo=1, routed)           0.000     9.516    dynamic_led2/seg_OBUF[6]_inst_i_610_n_0
+    SLICE_X9Y7           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.614 r  dynamic_led2/seg_OBUF[6]_inst_i_613/CO[3]
+                         net (fo=1, routed)           0.000     9.614    dynamic_led2/seg_OBUF[6]_inst_i_613_n_0
+    SLICE_X9Y8           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.712 r  dynamic_led2/seg_OBUF[6]_inst_i_946/CO[3]
+                         net (fo=1, routed)           0.000     9.712    dynamic_led2/seg_OBUF[6]_inst_i_946_n_0
+    SLICE_X9Y9           CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.132     9.844 f  dynamic_led2/seg_OBUF[6]_inst_i_719/CO[1]
+                         net (fo=24, routed)          0.711    10.555    dynamic_led2/seg_OBUF[6]_inst_i_719_n_2
+    SLICE_X11Y9          LUT3 (Prop_lut3_I0_O)        0.294    10.849 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
+                         net (fo=2, routed)           0.695    11.544    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
+    SLICE_X11Y9          LUT4 (Prop_lut4_I3_O)        0.267    11.811 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
+                         net (fo=1, routed)           0.000    11.811    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
+    SLICE_X11Y9          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    12.268 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
+                         net (fo=1, routed)           0.000    12.268    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
+    SLICE_X11Y10         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.265    12.533 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[1]
+                         net (fo=2, routed)           0.787    13.320    dynamic_led2/seg_OBUF[6]_inst_i_548_n_6
+    SLICE_X8Y10          LUT3 (Prop_lut3_I0_O)        0.261    13.581 r  dynamic_led2/seg_OBUF[6]_inst_i_540/O
+                         net (fo=2, routed)           0.697    14.278    dynamic_led2/seg_OBUF[6]_inst_i_540_n_0
+    SLICE_X8Y10          LUT4 (Prop_lut4_I3_O)        0.283    14.561 r  dynamic_led2/seg_OBUF[6]_inst_i_544/O
+                         net (fo=1, routed)           0.000    14.561    dynamic_led2/seg_OBUF[6]_inst_i_544_n_0
+    SLICE_X8Y10          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    14.877 r  dynamic_led2/seg_OBUF[6]_inst_i_319/CO[3]
+                         net (fo=1, routed)           0.000    14.877    dynamic_led2/seg_OBUF[6]_inst_i_319_n_0
+    SLICE_X8Y11          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.257    15.134 r  dynamic_led2/seg_OBUF[6]_inst_i_169/O[1]
+                         net (fo=3, routed)           1.012    16.146    dynamic_led2/seg_OBUF[6]_inst_i_169_n_6
+    SLICE_X6Y12          LUT2 (Prop_lut2_I1_O)        0.245    16.391 r  dynamic_led2/seg_OBUF[6]_inst_i_312/O
+                         net (fo=1, routed)           0.000    16.391    dynamic_led2/seg_OBUF[6]_inst_i_312_n_0
+    SLICE_X6Y12          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    16.707 r  dynamic_led2/seg_OBUF[6]_inst_i_163/CO[3]
+                         net (fo=1, routed)           0.000    16.707    dynamic_led2/seg_OBUF[6]_inst_i_163_n_0
+    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.199    16.906 r  dynamic_led2/seg_OBUF[6]_inst_i_109/O[2]
+                         net (fo=3, routed)           0.785    17.691    dynamic_led2/seg_OBUF[6]_inst_i_109_n_5
+    SLICE_X4Y11          LUT4 (Prop_lut4_I0_O)        0.244    17.935 r  dynamic_led2/seg_OBUF[6]_inst_i_179/O
+                         net (fo=1, routed)           0.444    18.379    dynamic_led2/seg_OBUF[6]_inst_i_179_n_0
+    SLICE_X2Y11          CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.327    18.706 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
+                         net (fo=1, routed)           0.000    18.706    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
+    SLICE_X2Y12          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.131    18.837 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
+                         net (fo=5, routed)           0.841    19.678    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
+    SLICE_X7Y15          LUT4 (Prop_lut4_I0_O)        0.291    19.969 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
+                         net (fo=3, routed)           0.684    20.652    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
+    SLICE_X8Y14          LUT6 (Prop_lut6_I4_O)        0.267    20.919 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
+                         net (fo=5, routed)           1.421    22.340    dynamic_led2/C[1]
+    SLICE_X28Y15         LUT6 (Prop_lut6_I0_O)        0.105    22.445 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
+                         net (fo=2, routed)           0.921    23.366    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
+    SLICE_X13Y16         LUT6 (Prop_lut6_I4_O)        0.105    23.471 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
+                         net (fo=1, routed)           0.648    24.119    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
+    SLICE_X12Y17         LUT6 (Prop_lut6_I5_O)        0.105    24.224 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
+                         net (fo=1, routed)           0.518    24.742    dynamic_led2/disp_right4[2]
+    SLICE_X8Y21          LUT5 (Prop_lut5_I1_O)        0.105    24.847 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
+                         net (fo=1, routed)           0.666    25.513    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
+    SLICE_X8Y22          LUT6 (Prop_lut6_I1_O)        0.264    25.777 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
+                         net (fo=7, routed)           1.009    26.786    dynamic_led2/sel0[2]
+    SLICE_X0Y23          LUT4 (Prop_lut4_I3_O)        0.118    26.904 r  dynamic_led2/seg_OBUF[0]_inst_i_1/O
+                         net (fo=1, routed)           1.381    28.285    seg_OBUF[0]
+    P11                  OBUF (Prop_obuf_I_O)         3.492    31.778 r  seg_OBUF[0]_inst/O
+                         net (fo=0)                   0.000    31.778    seg[0]
+    P11                                                               r  seg[0] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 delay_counter_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            seg[3]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        31.662ns  (logic 11.241ns (35.501%)  route 20.422ns (64.499%))
+  Logic Levels:           38  (CARRY4=19 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y7           FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
+    SLICE_X3Y7           FDRE (Prop_fdre_C_Q)         0.379     0.379 f  delay_counter_reg[0]/Q
+                         net (fo=68, routed)          1.917     2.296    dynamic_led2/delay_counter_reg[0]
+    SLICE_X14Y1          LUT1 (Prop_lut1_I0_O)        0.105     2.401 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
+                         net (fo=2, routed)           0.442     2.844    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
+    SLICE_X13Y2          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     3.324 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
+                         net (fo=1, routed)           0.000     3.324    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
+    SLICE_X13Y3          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.422 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
+                         net (fo=1, routed)           0.000     3.422    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
+    SLICE_X13Y4          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.520 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
+                         net (fo=1, routed)           0.000     3.520    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
+    SLICE_X13Y5          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.618 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
+                         net (fo=1, routed)           0.000     3.618    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
+    SLICE_X13Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.716 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
+                         net (fo=1, routed)           0.000     3.716    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
+    SLICE_X13Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.814 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
+                         net (fo=1, routed)           0.000     3.814    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
+    SLICE_X13Y8          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180     3.994 r  dynamic_led2/seg_OBUF[6]_inst_i_137/O[0]
+                         net (fo=20, routed)          1.476     5.470    dynamic_led2/tim_disp07[25]
+    SLICE_X30Y13         LUT3 (Prop_lut3_I0_O)        0.249     5.719 r  dynamic_led2/seg_OBUF[6]_inst_i_341/O
+                         net (fo=50, routed)          3.235     8.954    dynamic_led2/seg_OBUF[6]_inst_i_341_n_0
+    SLICE_X9Y6           LUT6 (Prop_lut6_I3_O)        0.105     9.059 r  dynamic_led2/seg_OBUF[6]_inst_i_799/O
+                         net (fo=1, routed)           0.000     9.059    dynamic_led2/seg_OBUF[6]_inst_i_799_n_0
+    SLICE_X9Y6           CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457     9.516 r  dynamic_led2/seg_OBUF[6]_inst_i_610/CO[3]
+                         net (fo=1, routed)           0.000     9.516    dynamic_led2/seg_OBUF[6]_inst_i_610_n_0
+    SLICE_X9Y7           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.614 r  dynamic_led2/seg_OBUF[6]_inst_i_613/CO[3]
+                         net (fo=1, routed)           0.000     9.614    dynamic_led2/seg_OBUF[6]_inst_i_613_n_0
+    SLICE_X9Y8           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.712 r  dynamic_led2/seg_OBUF[6]_inst_i_946/CO[3]
+                         net (fo=1, routed)           0.000     9.712    dynamic_led2/seg_OBUF[6]_inst_i_946_n_0
+    SLICE_X9Y9           CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.132     9.844 f  dynamic_led2/seg_OBUF[6]_inst_i_719/CO[1]
+                         net (fo=24, routed)          0.711    10.555    dynamic_led2/seg_OBUF[6]_inst_i_719_n_2
+    SLICE_X11Y9          LUT3 (Prop_lut3_I0_O)        0.294    10.849 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
+                         net (fo=2, routed)           0.695    11.544    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
+    SLICE_X11Y9          LUT4 (Prop_lut4_I3_O)        0.267    11.811 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
+                         net (fo=1, routed)           0.000    11.811    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
+    SLICE_X11Y9          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    12.268 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
+                         net (fo=1, routed)           0.000    12.268    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
+    SLICE_X11Y10         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.265    12.533 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[1]
+                         net (fo=2, routed)           0.787    13.320    dynamic_led2/seg_OBUF[6]_inst_i_548_n_6
+    SLICE_X8Y10          LUT3 (Prop_lut3_I0_O)        0.261    13.581 r  dynamic_led2/seg_OBUF[6]_inst_i_540/O
+                         net (fo=2, routed)           0.697    14.278    dynamic_led2/seg_OBUF[6]_inst_i_540_n_0
+    SLICE_X8Y10          LUT4 (Prop_lut4_I3_O)        0.283    14.561 r  dynamic_led2/seg_OBUF[6]_inst_i_544/O
+                         net (fo=1, routed)           0.000    14.561    dynamic_led2/seg_OBUF[6]_inst_i_544_n_0
+    SLICE_X8Y10          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    14.877 r  dynamic_led2/seg_OBUF[6]_inst_i_319/CO[3]
+                         net (fo=1, routed)           0.000    14.877    dynamic_led2/seg_OBUF[6]_inst_i_319_n_0
+    SLICE_X8Y11          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.257    15.134 r  dynamic_led2/seg_OBUF[6]_inst_i_169/O[1]
+                         net (fo=3, routed)           1.012    16.146    dynamic_led2/seg_OBUF[6]_inst_i_169_n_6
+    SLICE_X6Y12          LUT2 (Prop_lut2_I1_O)        0.245    16.391 r  dynamic_led2/seg_OBUF[6]_inst_i_312/O
+                         net (fo=1, routed)           0.000    16.391    dynamic_led2/seg_OBUF[6]_inst_i_312_n_0
+    SLICE_X6Y12          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    16.707 r  dynamic_led2/seg_OBUF[6]_inst_i_163/CO[3]
+                         net (fo=1, routed)           0.000    16.707    dynamic_led2/seg_OBUF[6]_inst_i_163_n_0
+    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.199    16.906 r  dynamic_led2/seg_OBUF[6]_inst_i_109/O[2]
+                         net (fo=3, routed)           0.785    17.691    dynamic_led2/seg_OBUF[6]_inst_i_109_n_5
+    SLICE_X4Y11          LUT4 (Prop_lut4_I0_O)        0.244    17.935 r  dynamic_led2/seg_OBUF[6]_inst_i_179/O
+                         net (fo=1, routed)           0.444    18.379    dynamic_led2/seg_OBUF[6]_inst_i_179_n_0
+    SLICE_X2Y11          CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.327    18.706 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
+                         net (fo=1, routed)           0.000    18.706    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
+    SLICE_X2Y12          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.131    18.837 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
+                         net (fo=5, routed)           0.841    19.678    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
+    SLICE_X7Y15          LUT4 (Prop_lut4_I0_O)        0.291    19.969 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
+                         net (fo=3, routed)           0.684    20.652    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
+    SLICE_X8Y14          LUT6 (Prop_lut6_I4_O)        0.267    20.919 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
+                         net (fo=5, routed)           1.421    22.340    dynamic_led2/C[1]
+    SLICE_X28Y15         LUT6 (Prop_lut6_I0_O)        0.105    22.445 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
+                         net (fo=2, routed)           0.921    23.366    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
+    SLICE_X13Y16         LUT6 (Prop_lut6_I4_O)        0.105    23.471 r  dynamic_led2/seg_OBUF[6]_inst_i_80/O
+                         net (fo=1, routed)           0.648    24.119    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
+    SLICE_X12Y17         LUT6 (Prop_lut6_I5_O)        0.105    24.224 r  dynamic_led2/seg_OBUF[6]_inst_i_45/O
+                         net (fo=1, routed)           0.518    24.742    dynamic_led2/disp_right4[2]
+    SLICE_X8Y21          LUT5 (Prop_lut5_I1_O)        0.105    24.847 r  dynamic_led2/seg_OBUF[6]_inst_i_17/O
+                         net (fo=1, routed)           0.666    25.513    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
+    SLICE_X8Y22          LUT6 (Prop_lut6_I1_O)        0.264    25.777 r  dynamic_led2/seg_OBUF[6]_inst_i_4/O
+                         net (fo=7, routed)           0.744    26.521    dynamic_led2/sel0[2]
+    SLICE_X0Y23          LUT4 (Prop_lut4_I2_O)        0.105    26.626 r  dynamic_led2/seg_OBUF[3]_inst_i_1/O
+                         net (fo=1, routed)           1.778    28.404    seg_OBUF[3]
+    K13                  OBUF (Prop_obuf_I_O)         3.259    31.662 r  seg_OBUF[3]_inst/O
+                         net (fo=0)                   0.000    31.662    seg[3]
+    K13                                                               r  seg[3] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 delay_counter_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            seg[1]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        31.204ns  (logic 11.300ns (36.213%)  route 19.904ns (63.787%))
+  Logic Levels:           38  (CARRY4=19 FDRE=1 LUT1=1 LUT2=1 LUT3=3 LUT4=5 LUT5=1 LUT6=6 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y7           FDRE                         0.000     0.000 r  delay_counter_reg[0]/C
+    SLICE_X3Y7           FDRE (Prop_fdre_C_Q)         0.379     0.379 f  delay_counter_reg[0]/Q
+                         net (fo=68, routed)          1.917     2.296    dynamic_led2/delay_counter_reg[0]
+    SLICE_X14Y1          LUT1 (Prop_lut1_I0_O)        0.105     2.401 r  dynamic_led2/seg_OBUF[6]_inst_i_604/O
+                         net (fo=2, routed)           0.442     2.844    dynamic_led2/seg_OBUF[6]_inst_i_604_n_0
+    SLICE_X13Y2          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.480     3.324 r  dynamic_led2/seg_OBUF[6]_inst_i_354/CO[3]
+                         net (fo=1, routed)           0.000     3.324    dynamic_led2/seg_OBUF[6]_inst_i_354_n_0
+    SLICE_X13Y3          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.422 r  dynamic_led2/seg_OBUF[6]_inst_i_491/CO[3]
+                         net (fo=1, routed)           0.000     3.422    dynamic_led2/seg_OBUF[6]_inst_i_491_n_0
+    SLICE_X13Y4          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.520 r  dynamic_led2/seg_OBUF[6]_inst_i_490/CO[3]
+                         net (fo=1, routed)           0.000     3.520    dynamic_led2/seg_OBUF[6]_inst_i_490_n_0
+    SLICE_X13Y5          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.618 r  dynamic_led2/seg_OBUF[6]_inst_i_487/CO[3]
+                         net (fo=1, routed)           0.000     3.618    dynamic_led2/seg_OBUF[6]_inst_i_487_n_0
+    SLICE_X13Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.716 r  dynamic_led2/seg_OBUF[6]_inst_i_433/CO[3]
+                         net (fo=1, routed)           0.000     3.716    dynamic_led2/seg_OBUF[6]_inst_i_433_n_0
+    SLICE_X13Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     3.814 r  dynamic_led2/seg_OBUF[6]_inst_i_223/CO[3]
+                         net (fo=1, routed)           0.000     3.814    dynamic_led2/seg_OBUF[6]_inst_i_223_n_0
+    SLICE_X13Y8          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.180     3.994 r  dynamic_led2/seg_OBUF[6]_inst_i_137/O[0]
+                         net (fo=20, routed)          1.476     5.470    dynamic_led2/tim_disp07[25]
+    SLICE_X30Y13         LUT3 (Prop_lut3_I0_O)        0.249     5.719 r  dynamic_led2/seg_OBUF[6]_inst_i_341/O
+                         net (fo=50, routed)          3.235     8.954    dynamic_led2/seg_OBUF[6]_inst_i_341_n_0
+    SLICE_X9Y6           LUT6 (Prop_lut6_I3_O)        0.105     9.059 r  dynamic_led2/seg_OBUF[6]_inst_i_799/O
+                         net (fo=1, routed)           0.000     9.059    dynamic_led2/seg_OBUF[6]_inst_i_799_n_0
+    SLICE_X9Y6           CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457     9.516 r  dynamic_led2/seg_OBUF[6]_inst_i_610/CO[3]
+                         net (fo=1, routed)           0.000     9.516    dynamic_led2/seg_OBUF[6]_inst_i_610_n_0
+    SLICE_X9Y7           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.614 r  dynamic_led2/seg_OBUF[6]_inst_i_613/CO[3]
+                         net (fo=1, routed)           0.000     9.614    dynamic_led2/seg_OBUF[6]_inst_i_613_n_0
+    SLICE_X9Y8           CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     9.712 r  dynamic_led2/seg_OBUF[6]_inst_i_946/CO[3]
+                         net (fo=1, routed)           0.000     9.712    dynamic_led2/seg_OBUF[6]_inst_i_946_n_0
+    SLICE_X9Y9           CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.132     9.844 f  dynamic_led2/seg_OBUF[6]_inst_i_719/CO[1]
+                         net (fo=24, routed)          0.711    10.555    dynamic_led2/seg_OBUF[6]_inst_i_719_n_2
+    SLICE_X11Y9          LUT3 (Prop_lut3_I0_O)        0.294    10.849 r  dynamic_led2/seg_OBUF[6]_inst_i_971/O
+                         net (fo=2, routed)           0.695    11.544    dynamic_led2/seg_OBUF[6]_inst_i_971_n_0
+    SLICE_X11Y9          LUT4 (Prop_lut4_I3_O)        0.267    11.811 r  dynamic_led2/seg_OBUF[6]_inst_i_975/O
+                         net (fo=1, routed)           0.000    11.811    dynamic_led2/seg_OBUF[6]_inst_i_975_n_0
+    SLICE_X11Y9          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.457    12.268 r  dynamic_led2/seg_OBUF[6]_inst_i_739/CO[3]
+                         net (fo=1, routed)           0.000    12.268    dynamic_led2/seg_OBUF[6]_inst_i_739_n_0
+    SLICE_X11Y10         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.265    12.533 r  dynamic_led2/seg_OBUF[6]_inst_i_548/O[1]
+                         net (fo=2, routed)           0.787    13.320    dynamic_led2/seg_OBUF[6]_inst_i_548_n_6
+    SLICE_X8Y10          LUT3 (Prop_lut3_I0_O)        0.261    13.581 r  dynamic_led2/seg_OBUF[6]_inst_i_540/O
+                         net (fo=2, routed)           0.697    14.278    dynamic_led2/seg_OBUF[6]_inst_i_540_n_0
+    SLICE_X8Y10          LUT4 (Prop_lut4_I3_O)        0.283    14.561 r  dynamic_led2/seg_OBUF[6]_inst_i_544/O
+                         net (fo=1, routed)           0.000    14.561    dynamic_led2/seg_OBUF[6]_inst_i_544_n_0
+    SLICE_X8Y10          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    14.877 r  dynamic_led2/seg_OBUF[6]_inst_i_319/CO[3]
+                         net (fo=1, routed)           0.000    14.877    dynamic_led2/seg_OBUF[6]_inst_i_319_n_0
+    SLICE_X8Y11          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.257    15.134 r  dynamic_led2/seg_OBUF[6]_inst_i_169/O[1]
+                         net (fo=3, routed)           1.012    16.146    dynamic_led2/seg_OBUF[6]_inst_i_169_n_6
+    SLICE_X6Y12          LUT2 (Prop_lut2_I1_O)        0.245    16.391 r  dynamic_led2/seg_OBUF[6]_inst_i_312/O
+                         net (fo=1, routed)           0.000    16.391    dynamic_led2/seg_OBUF[6]_inst_i_312_n_0
+    SLICE_X6Y12          CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316    16.707 r  dynamic_led2/seg_OBUF[6]_inst_i_163/CO[3]
+                         net (fo=1, routed)           0.000    16.707    dynamic_led2/seg_OBUF[6]_inst_i_163_n_0
+    SLICE_X6Y13          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.199    16.906 r  dynamic_led2/seg_OBUF[6]_inst_i_109/O[2]
+                         net (fo=3, routed)           0.785    17.691    dynamic_led2/seg_OBUF[6]_inst_i_109_n_5
+    SLICE_X4Y11          LUT4 (Prop_lut4_I0_O)        0.244    17.935 r  dynamic_led2/seg_OBUF[6]_inst_i_179/O
+                         net (fo=1, routed)           0.444    18.379    dynamic_led2/seg_OBUF[6]_inst_i_179_n_0
+    SLICE_X2Y11          CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.327    18.706 r  dynamic_led2/seg_OBUF[6]_inst_i_112/CO[3]
+                         net (fo=1, routed)           0.000    18.706    dynamic_led2/seg_OBUF[6]_inst_i_112_n_0
+    SLICE_X2Y12          CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.131    18.837 r  dynamic_led2/seg_OBUF[6]_inst_i_86/CO[1]
+                         net (fo=5, routed)           0.841    19.678    dynamic_led2/seg_OBUF[6]_inst_i_86_n_2
+    SLICE_X7Y15          LUT4 (Prop_lut4_I0_O)        0.291    19.969 r  dynamic_led2/seg_OBUF[6]_inst_i_107/O
+                         net (fo=3, routed)           0.684    20.652    dynamic_led2/seg_OBUF[6]_inst_i_107_n_0
+    SLICE_X8Y14          LUT6 (Prop_lut6_I4_O)        0.267    20.919 r  dynamic_led2/seg_OBUF[6]_inst_i_75/O
+                         net (fo=5, routed)           1.421    22.340    dynamic_led2/C[1]
+    SLICE_X28Y15         LUT6 (Prop_lut6_I0_O)        0.105    22.445 r  dynamic_led2/seg_OBUF[6]_inst_i_89/O
+                         net (fo=2, routed)           0.921    23.366    dynamic_led2/seg_OBUF[6]_inst_i_89_n_0
+    SLICE_X13Y16         LUT6 (Prop_lut6_I4_O)        0.105    23.471 f  dynamic_led2/seg_OBUF[6]_inst_i_80/O
+                         net (fo=1, routed)           0.648    24.119    dynamic_led2/seg_OBUF[6]_inst_i_80_n_0
+    SLICE_X12Y17         LUT6 (Prop_lut6_I5_O)        0.105    24.224 f  dynamic_led2/seg_OBUF[6]_inst_i_45/O
+                         net (fo=1, routed)           0.518    24.742    dynamic_led2/disp_right4[2]
+    SLICE_X8Y21          LUT5 (Prop_lut5_I1_O)        0.105    24.847 f  dynamic_led2/seg_OBUF[6]_inst_i_17/O
+                         net (fo=1, routed)           0.666    25.513    dynamic_led2/seg_OBUF[6]_inst_i_17_n_0
+    SLICE_X8Y22          LUT6 (Prop_lut6_I1_O)        0.264    25.777 f  dynamic_led2/seg_OBUF[6]_inst_i_4/O
+                         net (fo=7, routed)           0.747    26.524    dynamic_led2/sel0[2]
+    SLICE_X0Y23          LUT4 (Prop_lut4_I1_O)        0.105    26.629 r  dynamic_led2/seg_OBUF[1]_inst_i_1/O
+                         net (fo=1, routed)           1.256    27.886    seg_OBUF[1]
+    N12                  OBUF (Prop_obuf_I_O)         3.318    31.204 r  seg_OBUF[1]_inst/O
+                         net (fo=0)                   0.000    31.204    seg[1]
+    N12                                                               r  seg[1] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 page_sel[2]
                             (input port)
   Destination:            page_led[1]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        11.127ns  (logic 5.029ns (45.197%)  route 6.098ns (54.803%))
+  Data Path Delay:        11.547ns  (logic 5.004ns (43.332%)  route 6.544ns (56.668%))
   Logic Levels:           3  (IBUF=1 LUT3=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    R6                                                0.000     0.000 f  page_sel[1] (IN)
-                         net (fo=0)                   0.000     0.000    page_sel[1]
-    R6                   IBUF (Prop_ibuf_I_O)         1.455     1.455 f  page_sel_IBUF[1]_inst/O
-                         net (fo=40, routed)          4.197     5.652    page_sel_IBUF[1]
-    SLICE_X64Y29         LUT3 (Prop_lut3_I2_O)        0.118     5.770 r  page_led_OBUF[1]_inst_i_1/O
-                         net (fo=1, routed)           1.900     7.671    page_led_OBUF[1]
-    M1                   OBUF (Prop_obuf_I_O)         3.456    11.127 r  page_led_OBUF[1]_inst/O
-                         net (fo=0)                   0.000    11.127    page_led[1]
+    P6                                                0.000     0.000 f  page_sel[2] (IN)
+                         net (fo=0)                   0.000     0.000    page_sel[2]
+    P6                   IBUF (Prop_ibuf_I_O)         1.441     1.441 f  page_sel_IBUF[2]_inst/O
+                         net (fo=35, routed)          4.644     6.084    page_sel_IBUF[2]
+    SLICE_X65Y29         LUT3 (Prop_lut3_I0_O)        0.115     6.199 r  page_led_OBUF[1]_inst_i_1/O
+                         net (fo=1, routed)           1.900     8.100    page_led_OBUF[1]
+    M1                   OBUF (Prop_obuf_I_O)         3.448    11.547 r  page_led_OBUF[1]_inst/O
+                         net (fo=0)                   0.000    11.547    page_led[1]
     M1                                                                r  page_led[1] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 page_sel[2]
+                            (input port)
+  Destination:            page_led[3]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        11.349ns  (logic 4.997ns (44.032%)  route 6.352ns (55.968%))
+  Logic Levels:           3  (IBUF=1 LUT3=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    P6                                                0.000     0.000 f  page_sel[2] (IN)
+                         net (fo=0)                   0.000     0.000    page_sel[2]
+    P6                   IBUF (Prop_ibuf_I_O)         1.441     1.441 f  page_sel_IBUF[2]_inst/O
+                         net (fo=35, routed)          4.644     6.084    page_sel_IBUF[2]
+    SLICE_X65Y29         LUT3 (Prop_lut3_I2_O)        0.115     6.199 r  page_led_OBUF[3]_inst_i_1/O
+                         net (fo=1, routed)           1.708     7.908    page_led_OBUF[3]
+    P1                   OBUF (Prop_obuf_I_O)         3.442    11.349 r  page_led_OBUF[3]_inst/O
+                         net (fo=0)                   0.000    11.349    page_led[3]
+    P1                                                                r  page_led[3] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -1003,7 +1068,7 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.974ns  (logic 4.801ns (43.754%)  route 6.172ns (56.246%))
+  Data Path Delay:        11.318ns  (logic 4.801ns (42.422%)  route 6.517ns (57.578%))
   Logic Levels:           3  (IBUF=1 LUT3=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -1011,35 +1076,12 @@ Slack:                    inf
     P6                                                0.000     0.000 r  page_sel[2] (IN)
                          net (fo=0)                   0.000     0.000    page_sel[2]
     P6                   IBUF (Prop_ibuf_I_O)         1.441     1.441 r  page_sel_IBUF[2]_inst/O
-                         net (fo=35, routed)          4.307     5.748    page_sel_IBUF[2]
-    SLICE_X64Y29         LUT3 (Prop_lut3_I1_O)        0.105     5.853 r  page_led_OBUF[0]_inst_i_1/O
-                         net (fo=1, routed)           1.865     7.718    page_led_OBUF[0]
-    L4                   OBUF (Prop_obuf_I_O)         3.256    10.974 r  page_led_OBUF[0]_inst/O
-                         net (fo=0)                   0.000    10.974    page_led[0]
+                         net (fo=35, routed)          4.652     6.092    page_sel_IBUF[2]
+    SLICE_X65Y29         LUT3 (Prop_lut3_I1_O)        0.105     6.197 r  page_led_OBUF[0]_inst_i_1/O
+                         net (fo=1, routed)           1.865     8.063    page_led_OBUF[0]
+    L4                   OBUF (Prop_obuf_I_O)         3.256    11.318 r  page_led_OBUF[0]_inst/O
+                         net (fo=0)                   0.000    11.318    page_led[0]
     L4                                                                r  page_led[0] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 page_sel[1]
-                            (input port)
-  Destination:            page_led[3]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        10.926ns  (logic 5.012ns (45.868%)  route 5.914ns (54.132%))
-  Logic Levels:           3  (IBUF=1 LUT3=1 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    R6                                                0.000     0.000 r  page_sel[1] (IN)
-                         net (fo=0)                   0.000     0.000    page_sel[1]
-    R6                   IBUF (Prop_ibuf_I_O)         1.455     1.455 r  page_sel_IBUF[1]_inst/O
-                         net (fo=40, routed)          4.206     5.661    page_sel_IBUF[1]
-    SLICE_X64Y29         LUT3 (Prop_lut3_I1_O)        0.118     5.779 r  page_led_OBUF[3]_inst_i_1/O
-                         net (fo=1, routed)           1.708     7.487    page_led_OBUF[3]
-    P1                   OBUF (Prop_obuf_I_O)         3.439    10.926 r  page_led_OBUF[3]_inst/O
-                         net (fo=0)                   0.000    10.926    page_led[3]
-    P1                                                                r  page_led[3] (OUT)
   -------------------------------------------------------------------    -------------------
 
 
@@ -1049,189 +1091,189 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 key_deboucing/FSM_onehot_current_state_reg[0]/C
+  Source:                 norm_up_cnt1_reg[3]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            key_deboucing/FSM_onehot_current_state_reg[1]/D
+  Destination:            norm_up_cnt1_reg[2]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.208ns  (logic 0.141ns (67.807%)  route 0.067ns (32.193%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y1           FDRE                         0.000     0.000 r  key_deboucing/FSM_onehot_current_state_reg[0]/C
-    SLICE_X1Y1           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  key_deboucing/FSM_onehot_current_state_reg[0]/Q
-                         net (fo=7, routed)           0.067     0.208    key_deboucing/row_temp0
-    SLICE_X1Y1           FDRE                                         r  key_deboucing/FSM_onehot_current_state_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 key_deboucing/col_temp_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            key_deboucing/key_reg[1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.275ns  (logic 0.141ns (51.325%)  route 0.134ns (48.675%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y3           FDRE                         0.000     0.000 r  key_deboucing/col_temp_reg[1]/C
-    SLICE_X4Y3           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  key_deboucing/col_temp_reg[1]/Q
-                         net (fo=2, routed)           0.134     0.275    key_deboucing/p_0_in[1]
-    SLICE_X4Y1           FDRE                                         r  key_deboucing/key_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 onday1_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            onday1_reg[1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.301ns  (logic 0.186ns (61.884%)  route 0.115ns (38.116%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X5Y27          FDRE                         0.000     0.000 r  onday1_reg[2]/C
-    SLICE_X5Y27          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  onday1_reg[2]/Q
-                         net (fo=6, routed)           0.115     0.256    onday1__0[2]
-    SLICE_X4Y27          LUT5 (Prop_lut5_I0_O)        0.045     0.301 r  onday1[1]_i_1/O
-                         net (fo=1, routed)           0.000     0.301    onday1[1]_i_1_n_0
-    SLICE_X4Y27          FDRE                                         r  onday1_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 onday1_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            onday1_reg[2]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.303ns  (logic 0.186ns (61.312%)  route 0.117ns (38.688%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y27          FDRE                         0.000     0.000 r  onday1_reg[1]/C
-    SLICE_X4Y27          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  onday1_reg[1]/Q
-                         net (fo=6, routed)           0.117     0.258    onday1__0[1]
-    SLICE_X5Y27          LUT3 (Prop_lut3_I1_O)        0.045     0.303 r  onday1[2]_i_1/O
-                         net (fo=1, routed)           0.000     0.303    onday1__1[2]
-    SLICE_X5Y27          FDRE                                         r  onday1_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 onday1_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            onday1_reg[3]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.304ns  (logic 0.189ns (62.261%)  route 0.115ns (37.739%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X5Y27          FDRE                         0.000     0.000 r  onday1_reg[2]/C
-    SLICE_X5Y27          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  onday1_reg[2]/Q
-                         net (fo=6, routed)           0.115     0.256    onday1__0[2]
-    SLICE_X4Y27          LUT5 (Prop_lut5_I1_O)        0.048     0.304 r  onday1[3]_i_1/O
-                         net (fo=1, routed)           0.000     0.304    onday1[3]_i_1_n_0
-    SLICE_X4Y27          FDRE                                         r  onday1_reg[3]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 current_state_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            current_state_reg[2]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.304ns  (logic 0.186ns (61.173%)  route 0.118ns (38.827%))
+  Data Path Delay:        0.261ns  (logic 0.186ns (71.158%)  route 0.075ns (28.842%))
   Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y0           FDRE                         0.000     0.000 r  current_state_reg[1]/C
-    SLICE_X4Y0           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  current_state_reg[1]/Q
-                         net (fo=35, routed)          0.118     0.259    key_deboucing/current_state[1]
-    SLICE_X5Y0           LUT6 (Prop_lut6_I2_O)        0.045     0.304 r  key_deboucing/current_state[2]_i_1/O
-                         net (fo=1, routed)           0.000     0.304    key_deboucing_n_0
-    SLICE_X5Y0           FDRE                                         r  current_state_reg[2]/D
+    SLICE_X7Y16          FDRE                         0.000     0.000 r  norm_up_cnt1_reg[3]/C
+    SLICE_X7Y16          FDRE (Prop_fdre_C_Q)         0.141     0.141 f  norm_up_cnt1_reg[3]/Q
+                         net (fo=5, routed)           0.075     0.216    norm_up_cnt1_reg_n_0_[3]
+    SLICE_X6Y16          LUT6 (Prop_lut6_I2_O)        0.045     0.261 r  norm_up_cnt1[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.261    norm_up_cnt1[2]_i_1_n_0
+    SLICE_X6Y16          FDRE                                         r  norm_up_cnt1_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 key_deboucing/switch_flag_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            key_deboucing/FSM_onehot_current_state_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.270ns  (logic 0.186ns (69.009%)  route 0.084ns (30.991%))
+  Logic Levels:           2  (FDRE=1 LUT4=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y4           FDRE                         0.000     0.000 r  key_deboucing/switch_flag_reg[1]/C
+    SLICE_X0Y4           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  key_deboucing/switch_flag_reg[1]/Q
+                         net (fo=4, routed)           0.084     0.225    key_deboucing/switch_flag_reg_n_0_[1]
+    SLICE_X1Y4           LUT4 (Prop_lut4_I1_O)        0.045     0.270 r  key_deboucing/FSM_onehot_current_state[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.270    key_deboucing/FSM_onehot_current_state[0]_i_1_n_0
+    SLICE_X1Y4           FDRE                                         r  key_deboucing/FSM_onehot_current_state_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 key_deboucing/row_temp_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            key_deboucing/FSM_onehot_current_state_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.270ns  (logic 0.186ns (68.936%)  route 0.084ns (31.064%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y4           FDRE                         0.000     0.000 r  key_deboucing/row_temp_reg[1]/C
+    SLICE_X0Y4           FDRE (Prop_fdre_C_Q)         0.141     0.141 f  key_deboucing/row_temp_reg[1]/Q
+                         net (fo=8, routed)           0.084     0.225    key_deboucing/p_0_in[3]
+    SLICE_X1Y4           LUT6 (Prop_lut6_I2_O)        0.045     0.270 r  key_deboucing/FSM_onehot_current_state[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.270    key_deboucing/FSM_onehot_current_state[2]_i_1_n_0
+    SLICE_X1Y4           FDRE                                         r  key_deboucing/FSM_onehot_current_state_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 key_deboucing/row_temp_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            key_deboucing/key_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.287ns  (logic 0.141ns (49.068%)  route 0.146ns (50.932%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y4           FDRE                         0.000     0.000 r  key_deboucing/row_temp_reg[0]/C
+    SLICE_X0Y4           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  key_deboucing/row_temp_reg[0]/Q
+                         net (fo=8, routed)           0.146     0.287    key_deboucing/p_0_in[2]
+    SLICE_X1Y3           FDRE                                         r  key_deboucing/key_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 ontime_cnt4_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            ontime_cnt4_reg[2]/D
+  Destination:            ontime_cnt5_reg[0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.305ns  (logic 0.186ns (60.982%)  route 0.119ns (39.018%))
-  Logic Levels:           2  (FDRE=1 LUT4=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X7Y21          FDRE                         0.000     0.000 r  ontime_cnt4_reg[1]/C
-    SLICE_X7Y21          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  ontime_cnt4_reg[1]/Q
-                         net (fo=8, routed)           0.119     0.260    ontime_cnt4_reg_n_0_[1]
-    SLICE_X6Y21          LUT4 (Prop_lut4_I2_O)        0.045     0.305 r  ontime_cnt4[2]_i_1/O
-                         net (fo=1, routed)           0.000     0.305    ontime_cnt4[2]_i_1_n_0
-    SLICE_X6Y21          FDRE                                         r  ontime_cnt4_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 onday3_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            onday3_reg[1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.310ns  (logic 0.186ns (59.988%)  route 0.124ns (40.012%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y25          FDRE                         0.000     0.000 r  onday3_reg[0]/C
-    SLICE_X3Y25          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  onday3_reg[0]/Q
-                         net (fo=7, routed)           0.124     0.265    onday3__0[0]
-    SLICE_X2Y25          LUT5 (Prop_lut5_I4_O)        0.045     0.310 r  onday3[1]_i_1/O
-                         net (fo=1, routed)           0.000     0.310    onday3[1]_i_1_n_0
-    SLICE_X2Y25          FDRE                                         r  onday3_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 onday3_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            onday3_reg[3]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.313ns  (logic 0.189ns (60.372%)  route 0.124ns (39.628%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y25          FDRE                         0.000     0.000 r  onday3_reg[0]/C
-    SLICE_X3Y25          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  onday3_reg[0]/Q
-                         net (fo=7, routed)           0.124     0.265    onday3__0[0]
-    SLICE_X2Y25          LUT5 (Prop_lut5_I3_O)        0.048     0.313 r  onday3[3]_i_1/O
-                         net (fo=1, routed)           0.000     0.313    onday3[3]_i_1_n_0
-    SLICE_X2Y25          FDRE                                         r  onday3_reg[3]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 ontime_cnt3_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            ontime_cnt3_reg[0]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.316ns  (logic 0.186ns (58.940%)  route 0.130ns (41.060%))
+  Data Path Delay:        0.294ns  (logic 0.186ns (63.163%)  route 0.108ns (36.837%))
   Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y26          FDRE                         0.000     0.000 r  ontime_cnt3_reg[0]/C
-    SLICE_X3Y26          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  ontime_cnt3_reg[0]/Q
-                         net (fo=8, routed)           0.130     0.271    ontime_cnt3__0[0]
-    SLICE_X3Y26          LUT6 (Prop_lut6_I0_O)        0.045     0.316 r  ontime_cnt3[0]_i_1/O
-                         net (fo=1, routed)           0.000     0.316    ontime_cnt3[0]
-    SLICE_X3Y26          FDRE                                         r  ontime_cnt3_reg[0]/D
+    SLICE_X13Y16         FDRE                         0.000     0.000 r  ontime_cnt4_reg[1]/C
+    SLICE_X13Y16         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  ontime_cnt4_reg[1]/Q
+                         net (fo=8, routed)           0.108     0.249    ontime_cnt4_reg_n_0_[1]
+    SLICE_X12Y16         LUT6 (Prop_lut6_I5_O)        0.045     0.294 r  ontime_cnt5[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.294    ontime_cnt5[0]
+    SLICE_X12Y16         FDRE                                         r  ontime_cnt5_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 key_deboucing/FSM_onehot_current_state_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            key_deboucing/row_temp_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.298ns  (logic 0.186ns (62.426%)  route 0.112ns (37.574%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y4           FDRE                         0.000     0.000 r  key_deboucing/FSM_onehot_current_state_reg[2]/C
+    SLICE_X1Y4           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  key_deboucing/FSM_onehot_current_state_reg[2]/Q
+                         net (fo=10, routed)          0.112     0.253    key_deboucing/FSM_onehot_current_state_reg_n_0_[2]
+    SLICE_X0Y4           LUT6 (Prop_lut6_I1_O)        0.045     0.298 r  key_deboucing/row_temp[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.298    key_deboucing/row_temp[0]_i_1_n_0
+    SLICE_X0Y4           FDRE                                         r  key_deboucing/row_temp_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 key_deboucing/FSM_onehot_current_state_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            key_deboucing/row_temp_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.298ns  (logic 0.186ns (62.388%)  route 0.112ns (37.612%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y4           FDRE                         0.000     0.000 r  key_deboucing/FSM_onehot_current_state_reg[2]/C
+    SLICE_X1Y4           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  key_deboucing/FSM_onehot_current_state_reg[2]/Q
+                         net (fo=10, routed)          0.112     0.253    key_deboucing/FSM_onehot_current_state_reg_n_0_[2]
+    SLICE_X0Y4           LUT6 (Prop_lut6_I1_O)        0.045     0.298 r  key_deboucing/row_temp[1]_i_1/O
+                         net (fo=1, routed)           0.000     0.298    key_deboucing/row_temp[1]_i_1_n_0
+    SLICE_X0Y4           FDRE                                         r  key_deboucing/row_temp_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 norm_up_cnt1_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            norm_up_cnt1_reg[3]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.300ns  (logic 0.209ns (69.581%)  route 0.091ns (30.419%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y16          FDRE                         0.000     0.000 r  norm_up_cnt1_reg[2]/C
+    SLICE_X6Y16          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  norm_up_cnt1_reg[2]/Q
+                         net (fo=5, routed)           0.091     0.255    norm_up_cnt1_reg_n_0_[2]
+    SLICE_X7Y16          LUT6 (Prop_lut6_I4_O)        0.045     0.300 r  norm_up_cnt1[3]_i_2/O
+                         net (fo=1, routed)           0.000     0.300    norm_up_cnt1[3]_i_2_n_0
+    SLICE_X7Y16          FDRE                                         r  norm_up_cnt1_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 key_deboucing/col_temp_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            key_deboucing/key_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.303ns  (logic 0.141ns (46.575%)  route 0.162ns (53.425%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y4           FDRE                         0.000     0.000 r  key_deboucing/col_temp_reg[0]/C
+    SLICE_X3Y4           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  key_deboucing/col_temp_reg[0]/Q
+                         net (fo=2, routed)           0.162     0.303    key_deboucing/p_0_in[0]
+    SLICE_X1Y3           FDRE                                         r  key_deboucing/key_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 norm_up_cnt1_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            norm_up_cnt1_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.303ns  (logic 0.209ns (68.893%)  route 0.094ns (31.107%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y16          FDRE                         0.000     0.000 r  norm_up_cnt1_reg[2]/C
+    SLICE_X6Y16          FDRE (Prop_fdre_C_Q)         0.164     0.164 f  norm_up_cnt1_reg[2]/Q
+                         net (fo=5, routed)           0.094     0.258    norm_up_cnt1_reg_n_0_[2]
+    SLICE_X7Y16          LUT6 (Prop_lut6_I3_O)        0.045     0.303 r  norm_up_cnt1[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.303    norm_up_cnt1[0]_i_1_n_0
+    SLICE_X7Y16          FDRE                                         r  norm_up_cnt1_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
 
